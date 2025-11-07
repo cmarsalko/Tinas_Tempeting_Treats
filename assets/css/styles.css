@@ -184,6 +184,37 @@ nav a:hover{
 .card .meta{margin: .35rem 1rem 1rem; color:#6b5950; font-size:.95rem; display:flex; justify-content:space-between; align-items:center}
 .price{font-weight:800; color:var(--brand-brown)}
 
+/* Menu page helpers */
+.menu-group-title {
+  font-family: 'CodecWarmExtraBold', system-ui, Arial;
+  font-size: 1.4rem;
+  margin: 0 0 .6rem;
+  color: var(--choco);
+}
+
+.menu-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card.tight {
+  padding: 1rem 1.2rem 1.2rem;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: .4rem 0 0;
+  color: #6b5950;
+  font-size: .95rem;
+}
+
+.note {
+  font-size: .85rem;
+  color: #8a7466;
+  font-weight: 400;
+}
+
+
 .menu-image{
   width:100%; max-width:900px; margin:1rem auto; display:block; border-radius:14px;
   border:6px solid #fff; box-shadow:0 12px 26px rgba(0,0,0,.08);
