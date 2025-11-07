@@ -25,10 +25,20 @@ body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 
 .center{text-align:center}
 .grid{display:grid;gap:1rem}
 .btn{
-  display:inline-block; padding:.8rem 1.1rem; border-radius:999px; border:none;
-  background:var(--brand-pink); color:#fff; text-decoration:none; font-weight:700;
+  display:inline-block;
+  padding:.8rem 1.8rem;
+  border-radius:999px;
+  border:none;
+  background:var(--brand-pink);
+  color:#fff;
+  text-decoration:none;
+  font-family: inherit;       /* keep same typeface as rest of form */
+  font-weight:600;            /* consistent with form labels */
+  font-size: 1rem;            /* 👈 add this line to unify font size */
   box-shadow:0 6px 16px rgba(255,122,162,.3);
+  text-align:center;
 }
+
 .btn:hover{filter:brightness(.95)}
 
 /* ==== Header + Nav (updated for image logo) ==== */
