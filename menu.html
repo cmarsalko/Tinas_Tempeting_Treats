@@ -12,7 +12,7 @@
 <header>
   <div class="container nav">
     <a class="brand" href="index.html">
-      <img src="assets/img/main_logo.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+      <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
       <h1>Tina's Tempting Treats</h1>
     </a>
 
@@ -27,22 +27,135 @@
   </div>
 </header>
 
-<main class="container section">
-  <h2>Full Menu</h2>
-  <p class="center">Upload your real menu image as <code>/assets/img/menu.jpg</code> and change the src below.</p>
-  <img class="menu-image" src="assets/img/menu-placeholder.jpg" alt="Full menu (placeholder)" />
+<main>
+  <!-- Intro -->
+  <section class="section container">
+    <h2>Menu</h2>
+    <p class="center">
+      Beautifully dipped treats and customizable party packages.
+      Serving Irwin, PA and surrounding areas.
+      For custom themes, colors, and edible images, pricing may vary.
+    </p>
+  </section>
 
-  <div class="center" style="margin-top:1rem">
-    <a class="btn" href="assets/img/menu-placeholder.jpg" download>Download menu (JPG)</a>
-  </div>
+  <!-- Dipped Chocolates -->
+  <section class="section container">
+    <h3 class="menu-group-title">Dipped Chocolates</h3>
+    <div class="grid menu-grid">
 
-  <section class="section">
-    <h2>How to Order</h2>
-    <div class="form">
-      <p><strong>Step 1:</strong> Browse the menu and decide your flavors and quantities.</p>
-      <p><strong>Step 2:</strong> Submit an <a href="index.html#inquiry">order inquiry</a> with your event date and details.</p>
-      <p><strong>Step 3:</strong> Tina will reply via email to confirm availability, pricing, and pickup or delivery.</p>
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-oreos.jpg');"></div>
+        <h3>Oreos</h3>
+        <p>Chocolate-dipped Oreos in your choice of colors &amp; sprinkles.</p>
+        <p class="price">$22 / dozen <span class="note">GF $25</span></p>
+      </div>
+
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-nutterbutters.jpg');"></div>
+        <h3>Nutter Butters</h3>
+        <p>Peanut butter cookies dipped &amp; decorated.</p>
+        <p class="price">$22 / dozen</p>
+      </div>
+
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-krispies.jpg');"></div>
+        <h3>Mini Rice Krispies</h3>
+        <p>Bite-size dipped cereal treats.</p>
+        <p class="price">$22 / dozen</p>
+      </div>
+
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-pretzels.jpg');"></div>
+        <h3>Pretzels (Rods &amp; Twists)</h3>
+        <p>Sweet &amp; salty dipped pretzels.</p>
+        <p class="price">$22 / dozen <span class="note">GF $25</span></p>
+      </div>
+
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-cakepops.jpg');"></div>
+        <h3>Cake Pops</h3>
+        <p>Decorated cake pops, perfect for celebrations.</p>
+        <p class="price">$25 / dozen <span class="note">GF $28</span></p>
+      </div>
+
+      <div class="card tight">
+        <div class="img" style="background-image:url('assets/img/menu-cookiebites.jpg');"></div>
+        <h3>Cookie Bites</h3>
+        <p>Mini cookies iced or with dipping containers.</p>
+        <p class="price">$15 / dozen</p>
+      </div>
+
     </div>
+    <p class="note center">
+      Custom designs &amp; edible images available. Additional charges may apply.
+    </p>
+  </section>
+
+  <!-- Party Packages -->
+  <section class="section container" id="packages">
+    <h3 class="menu-group-title">Party Packages</h3>
+    <div class="grid menu-grid">
+
+      <div class="card tight">
+        <h3>Mini &mdash; $60</h3>
+        <ul class="menu-list">
+          <li>1 doz Oreos <span class="note">(+ $3 GF)</span></li>
+          <li>1 doz Nutter Butters</li>
+          <li>6 Mini Rice Krispies</li>
+        </ul>
+      </div>
+
+      <div class="card tight">
+        <h3>Small &mdash; $95</h3>
+        <ul class="menu-list">
+          <li>1 doz Oreos <span class="note">(+ $3 GF)</span></li>
+          <li>1 doz Nutter Butters</li>
+          <li>1 doz Pretzels <span class="note">(+ $3 GF)</span></li>
+          <li>1 doz Mini Rice Krispies</li>
+        </ul>
+      </div>
+
+      <div class="card tight">
+        <h3>Medium &mdash; $140</h3>
+        <ul class="menu-list">
+          <li>2 doz Oreos <span class="note">(+ $6 GF)</span></li>
+          <li>2 doz Nutter Butters</li>
+          <li>1 doz Pretzels <span class="note">(+ $3 GF)</span></li>
+          <li>1 doz Mini Rice Krispies</li>
+        </ul>
+      </div>
+
+      <div class="card tight">
+        <h3>Large &mdash; $210</h3>
+        <ul class="menu-list">
+          <li>2 doz Oreos <span class="note">(+ $6 GF)</span></li>
+          <li>2 doz Nutter Butters</li>
+          <li>2 doz Pretzels <span class="note">(+ $6 GF)</span></li>
+          <li>2 doz Mini Rice Krispies</li>
+          <li>1 doz Cake Pops</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="note center">
+      All packages are customizable. Ask about themes, colors, and matching designs.
+    </p>
+  </section>
+
+    <!-- Full PDF menu link -->
+  <section class="section container center">
+    <h3 class="menu-group-title">View the Full Printable Menu</h3>
+    <p class="note">
+      See all treats, details, and packages in one place. Perfect for sharing or saving for later.
+    </p>
+    <a
+      href="assets/docs/tinas-tempting-treats-menu.pdf"
+      class="btn"
+      target="_blank"
+      rel="noopener"
+    >
+      View / Download Full Menu (PDF)
+    </a>
   </section>
 </main>
 
