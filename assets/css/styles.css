@@ -194,12 +194,25 @@ nav a:hover{
 }
 .form textarea{min-height:120px}
 .form small{color:#6b5950}
-.form .actions{display:flex; gap:.7rem; justify-content:center; margin-top:1rem}
-
-#inquiry {
-  scroll-margin-top: 120px;/
+.form .actions {
+  display: flex;
+  gap: .7rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;              
 }
 
+.form .actions .btn {
+  flex: 1 1 220px;              
+  min-width: 220px;             
+  text-align: center;
+}
+
+#inquiry {
+  scroll-margin-top: 120px;
+}
+
+/* Mobile layout for the inquiry form */
 /* Mobile layout for the inquiry form */
 @media (max-width: 700px) {
   .form .row {
@@ -217,18 +230,16 @@ nav a:hover{
   }
 
   .form .actions .btn {
-    width: 100%;
+    width: 100%;               /* full-width, same size */
   }
 }
+
 
 
 footer{padding:2rem 0; text-align:center; color:#6b5950}
 footer a{color:var(--brand-brown); font-weight:700; text-decoration:none}
 footer .brandline{margin:.5rem auto 0; max-width:var(--max); border-top:1px dashed #e8d8cf; padding-top:1rem}
 
-@media (max-width: 880px){
-  .hero{grid-template-columns:1fr}
-}
 
 html {
   scroll-behavior: smooth;
