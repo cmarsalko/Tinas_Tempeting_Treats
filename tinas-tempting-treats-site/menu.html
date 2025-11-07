@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tina's Tempting Treats — Menu</title>
+  <meta name="description" content="See Tina's full menu, flavors, and seasonal specials." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.png" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/img/main_logo.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+      <h1>Tina's Tempting Treats</h1>
+    </a>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="treats.html">Cookies & Cupcakes</a></li>
+        <li><a class="active" href="menu.html">Menu</a></li>
+        <li><a href="#inquiry">Order Inquiry</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container section">
+  <h2>Full Menu</h2>
+  <p class="center">Upload your real menu image as <code>/assets/img/menu.jpg</code> and change the src below.</p>
+  <img class="menu-image" src="assets/img/menu-placeholder.jpg" alt="Full menu (placeholder)" />
+
+  <div class="center" style="margin-top:1rem">
+    <a class="btn" href="assets/img/menu-placeholder.jpg" download>Download menu (JPG)</a>
+  </div>
+
+  <section class="section">
+    <h2>How to Order</h2>
+    <div class="form">
+      <p><strong>Step 1:</strong> Browse the menu and decide your flavors and quantities.</p>
+      <p><strong>Step 2:</strong> Submit an <a href="index.html#inquiry">order inquiry</a> with your event date and details.</p>
+      <p><strong>Step 3:</strong> Tina will reply via email to confirm availability, pricing, and pickup or delivery.</p>
+    </div>
+  </section>
+</main>
+
+<section id="inquiry" class="section container">
+  <h2>Order Inquiry</h2>
+  <form id="order-inquiry-form" class="form">
+    <div class="row">
+      <div>
+        <label for="name">Your name</label>
+        <input id="name" name="name" placeholder="Jane Doe" required />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@email.com" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="phone">Phone (optional)</label>
+        <input id="phone" name="phone" placeholder="(412) 555-0123" />
+      </div>
+      <div>
+        <label for="category">What are you ordering?</label>
+        <select id="category" name="category">
+          <option>Cookies</option>
+          <option>Cupcakes</option>
+          <option>Brownies</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="qty">Quantity</label>
+        <input id="qty" name="qty" type="number" min="1" step="1" value="12" />
+      </div>
+      <div>
+        <label for="fulfillment">Pickup or delivery?</label>
+        <select id="fulfillment" name="fulfillment">
+          <option>Pickup</option>
+          <option>Delivery</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="eventDate">Event date (optional)</label>
+        <input id="eventDate" name="eventDate" type="date" />
+      </div>
+      <div>
+        <label for="details">Details</label>
+        <textarea id="details" name="details" placeholder="Flavors, themes, allergens, preferred pickup time…"></textarea>
+        <small>Submitting will open your email with details pre-filled (or send directly if you plug in Formspree later).</small>
+      </div>
+    </div>
+
+    <div class="actions center">
+      <button class="btn" type="submit">Send Inquiry</button>
+      <a class="btn" href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry">Email Tina directly</a>
+    </div>
+  </form>
+</section>
+
+
+<footer>
+  <div class="container">
+    <div class="brandline">
+      <strong>Tina's Tempting Treats</strong> • Pittsburgh, PA • <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
