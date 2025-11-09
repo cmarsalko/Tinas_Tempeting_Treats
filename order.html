@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tina's Tempting Treats — Order Inquiry</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Favicon (optional, match rest of site) -->
+  <link rel="icon" href="assets/img/logo_white.png">
+
+  <style>
+    .treat-font {
+      font-family: 'Pacifico', cursive;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fce7f3; /* light pink */
+    }
+    .section-title {
+      background-color: #4dc0c5;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .input-qty {
+      width: 70px;
+      text-align: center;
+      border: 1px solid #f9a8d4;
+      border-radius: 0.5rem;
+      padding: 0.25rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .input-qty:focus {
+      border-color: #f472b6;
+      box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.5);
+    }
+    .bg-fcf4f9 {
+      background-color: #fcf4f9;
+    }
+  </style>
+</head>
+
+<body class="p-4 sm:p-8">
+
+  <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
+
+    <!-- Header / Branding -->
+    <header class="text-center mb-8 border-b-2 border-pink-100 pb-4">
+      <div class="flex flex-col md:flex-row items-center justify-center md:space-x-6 gap-4">
+        <img
+          src="assets/img/Tina's Tempting Treats.png"
+          width="200"
+          height="150"
+          alt="Tina's Tempting Treats Logo"
+        >
+        <div class="text-left max-w-md">
+          <h1 class="treat-font text-3xl text-pink-500 mb-1">Tina's Tempting Treats</h1>
+          <p class="text-pink-600 italic">Sweeten the moment with handcrafted treats.</p>
+          <p class="text-pink-600 italic mt-2">
+            Follow on Instagram:
+            <a href="https://www.instagram.com/tinastemptingtreats" class="text-blue-500 hover:underline">@tinastemptingtreats</a>
+          </p>
+          <p class="text-sm text-pink-600 mt-2">
+            Order via
+            <a href="mailto:tinastemptingtreats@gmail.com" class="text-blue-500 hover:underline">tinastemptingtreats@gmail.com</a>
+            or call/text (412) 337-5866
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ORDER FORM (Formspree integrated) -->
+    <form
+      id="orderForm"
+      action="https://formspree.io/f/xjkjblao"
+      method="POST"
+      class="space-y-8"
+    >
+      <!-- Formspree email subject -->
+      <input type="hidden" name="_subject" value="New Tina's Tempting Treats Order Request">
+
+      <!-- Hidden fields populated by JS before submit -->
+      <input type="hidden" name="order_total" id="hiddenTotal">
+      <input type="hidden" name="order_details" id="hiddenSummary">
+
+      <!-- Your Details -->
+      <div class="mb-2 p-4 bg-pink-50 rounded-lg border border-pink-200">
+        <h2 class="text-2xl font-bold text-pink-600 mb-4">Your Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Full Name"
+            required
+            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email Address"
+            required
+            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Phone Number (Optional)"
+            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
+          >
+                <input
+        type="date"
+        id="date_needed"
+        name="date_needed"
+        required
+        class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
+        />
+
+        </div>
+      </div>
+
+      <!-- Items Sections -->
+      <div>
+        <!-- By the Dozen -->
+        <h2 class="section-title">By the Dozen</h2>
+        <div id="dozenItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
+
+        <hr class="mb-8 border-pink-200">
+
+        <!-- Holiday Treat Boxes -->
+        <h2 class="section-title">Holiday Treat Boxes</h2>
+        <div id="treatBoxItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
+
+        <hr class="mb-8 border-pink-200">
+
+        <!-- Party Packages -->
+        <h2 class="section-title">Party Packages</h2>
+        <div id="packageItems" class="space-y-4 mb-10"></div>
+      </div>
+
+      <!-- Total & Notes -->
+      <div class="space-y-6">
+        <!-- Total -->
+        <div class="p-6 bg-teal-50 border-4 border-teal-300 rounded-xl shadow-lg">
+          <h3 class="text-2xl font-bold text-teal-700 mb-4">Order Total (Estimate)</h3>
+          <div class="flex justify-between items-center text-3xl font-extrabold text-teal-900">
+            <span>Total:</span>
+            <span id="totalDisplay">$0.00</span>
+          </div>
+          <p class="text-xs text-teal-700 mt-2">
+            Final total may vary based on custom designs, rush orders, and availability. Tina will confirm everything via email.
+          </p>
+        </div>
+
+        <!-- Notes -->
+        <div class="p-6 bg-pink-50 rounded-xl border border-pink-200">
+          <h3 class="text-xl font-bold text-pink-600 mb-3">Customization & Notes</h3>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="5"
+            placeholder="Special instructions, colors, themes, packaging, allergies, or customizations (e.g., 'Pink & gold baby shower, gluten free Oreos, add logo toppers')."
+            class="w-full p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center mt-8 pt-4 border-t-2 border-pink-100">
+        <button
+          type="submit"
+          class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200 ease-in-out transform hover:scale-105"
+        >
+          Submit Order Request
+        </button>
+        <p class="text-sm text-gray-500 mt-2">
+          This submits an order request. Tina will email or text you to confirm details, availability, and final pricing.
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // ---- Pricing Data ----
+    const prices = {
+      dozen: [
+        { id: "dozen-oreos-classic", price: 22.00, name: "Oreos" },
+        { id: "dozen-oreos-gf",      price: 25.00, name: "GF Oreos" },
+        { id: "dozen-cakepops-classic", price: 25.00, name: "Cake Pops" },
+        { id: "dozen-cakepops-gf",      price: 28.00, name: "GF Cake Pops" },
+        { id: "dozen-nutterbutters",    price: 22.00, name: "Nutter Butters" },
+        { id: "dozen-miniricekrispies", price: 22.00, name: "Mini Rice Krispies" },
+        { id: "dozen-pretzels-classic", price: 22.00, name: "Pretzels (Rods & Twists)" },
+        { id: "dozen-pretzels-gf",      price: 25.00, name: "GF Pretzels (Rods & Twists)" },
+        { id: "dozen-chocchipcookiebites",  price: 15.00, name: "Chocolate Chip Cookie Bites" },
+        { id: "dozen-gfchocchipcookiebites",price: 18.00, name: "GF Chocolate Chip Cookie Bites" },
+        { id: "dozen-sugarcookiebites",     price: 15.00, name: "Sugar Cookie Bites" },
+        { id: "dozen-gfsugarcookiebites",   price: 18.00, name: "GF Sugar Cookie Bites" },
+        { id: "dozen-m&mcookiebites",       price: 15.00, name: "M&M Cookie Bites" },
+        { id: "dozen-gfm&mcookiebites",     price: 18.00, name: "GF M&M Cookie Bites" },
+        { id: "dozen-Smorescookiebites",    price: 15.00, name: "Smores Bites" },
+        { id: "dozen-GFSmorescookiebites",  price: 18.00, name: "GF Smores Bites" },
+        { id: "dozen-chocbrowniecookiebites", price: 15.00, name: "Chocolate Brownie Bites" },
+        { id: "dozen-GFcookiebites",         price: 18.00, name: "GF Chocolate Brownie Bites" }
+      ],
+      treatboxes: [
+        { id: "box-oreos",          price: 12.00, name: "Four Chocolate Dipped Oreo Box" },
+        { id: "box-oreos-gf",       price: 15.00, name: "Gluten Free Oreo Box" },
+        { id: "box-chips",          price: 12.00, name: "Chocolate Dipped Chips Box" },
+        { id: "box-chips-pretzels", price: 14.00, name: "Chips & Pretzels Box" }
+      ],
+      packages: [
+        {
+          id: "package-mini",
+          base_price: 60.00,
+          gf_surcharge: 3.00,
+          name: "Mini Package (30 treats)",
+          treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "6 Mini Rice Krispies"]
+        },
+        {
+          id: "package-small",
+          base_price: 95.00,
+          gf_surcharge: 3.00,
+          name: "Small Package (4 Dozen)",
+          treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
+        },
+        {
+          id: "package-medium",
+          base_price: 140.00,
+          gf_surcharge: 6.00,
+          name: "Medium Package (6 Dozen)",
+          treats: ["2 Dozen Oreos", "2 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
+        },
+        {
+          id: "package-large",
+          base_price: 210.00,
+          gf_surcharge: 6.00,
+          name: "Large Package (9 Dozen)",
+          treats: [
+            "2 Dozen Oreos",
+            "2 Dozen Nutter Butters",
+            "2 Dozen Pretzels",
+            "2 Dozen Mini Rice Krispies",
+            "1 Dozen Cake Pops"
+          ]
+        }
+      ]
+    };
+
+    // ---- Render helpers ----
+    function renderDozenItem(item, index) {
+      const bgColorClass = (index % 2 === 0) ? 'bg-fcf4f9' : 'bg-white';
+      const isDozen = item.id.startsWith('dozen');
+      const unitLabel = isDozen ? 'Dozen' : 'Box';
+
+      return `
+        <div class="flex items-center justify-between p-3 border border-pink-100 rounded-lg ${bgColorClass}">
+          <div class="flex-1 min-w-0 pr-4">
+            <span class="font-semibold text-gray-800">${item.name}</span>
+            <p class="text-sm text-gray-500 mt-1">($${item.price.toFixed(2)} / ${unitLabel})</p>
+          </div>
+          <input
+            type="number"
+            min="0"
+            value="0"
+            data-price="${item.price}"
+            id="${item.id}"
+            name="${item.id}"
+            class="input-qty total-calc"
+          >
+        </div>
+      `;
+    }
+
+    function renderPackageItem(pkg) {
+      return `
+        <div class="p-4 border-2 border-teal-200 rounded-lg bg-teal-50">
+          <div class="flex justify-between items-start mb-2">
+            <h4 class="font-bold text-teal-700 text-lg">
+              ${pkg.name} - $${pkg.base_price.toFixed(2)}
+            </h4>
+          </div>
+          <ul class="text-sm text-gray-600 mb-3 list-disc list-inside space-y-0.5">
+            ${pkg.treats.map(t => `<li>${t}</li>`).join('')}
+          </ul>
+          <div class="flex items-center justify-end space-x-4 pt-2 border-t border-teal-200">
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input
+                type="checkbox"
+                data-price="${pkg.base_price}"
+                id="${pkg.id}-classic"
+                name="package-selection"
+                class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500"
+              >
+              <span class="text-gray-700">Classic</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input
+                type="checkbox"
+                data-price="${pkg.base_price + pkg.gf_surcharge}"
+                id="${pkg.id}-gf"
+                name="package-selection"
+                class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500"
+              >
+              <span class="text-gray-700">
+                Gluten Free (+ $${pkg.gf_surcharge.toFixed(2)})
+              </span>
+            </label>
+          </div>
+        </div>
+      `;
+    }
+
+    // ---- Total calculation ----
+    function calculateTotal() {
+      let total = 0;
+
+      document.querySelectorAll('.total-calc').forEach(input => {
+        const priceAttr = input.getAttribute('data-price');
+        const price = priceAttr ? parseFloat(priceAttr) : 0;
+
+        if (input.type === 'number') {
+          const qty = parseInt(input.value, 10) || 0;
+          total += qty * price;
+        }
+
+        if (input.type === 'checkbox' && input.checked && input.name === 'package-selection') {
+          total += price;
+        }
+      });
+
+      document.getElementById('totalDisplay').textContent = `$${total.toFixed(2)}`;
+    }
+
+    // ---- Init ----
+    function initOrderForm() {
+      const dozenItemsContainer = document.getElementById('dozenItems');
+      const treatBoxItemsContainer = document.getElementById('treatBoxItems');
+      const packageItemsContainer = document.getElementById('packageItems');
+      const orderForm = document.getElementById('orderForm');
+
+      // Render items
+      dozenItemsContainer.innerHTML = prices.dozen.map(renderDozenItem).join('');
+      treatBoxItemsContainer.innerHTML = prices.treatboxes.map(renderDozenItem).join('');
+      packageItemsContainer.innerHTML = prices.packages.map(renderPackageItem).join('');
+
+      // Attach listeners
+      document.querySelectorAll('.total-calc').forEach(input => {
+        if (input.type === 'number') {
+          input.addEventListener('input', calculateTotal);
+          input.addEventListener('change', calculateTotal);
+        }
+        if (input.type === 'checkbox' && input.name === 'package-selection') {
+          input.addEventListener('change', (e) => {
+            if (e.target.checked) {
+              const pkgId = e.target.id.substring(0, e.target.id.lastIndexOf('-'));
+              const siblings = document.querySelectorAll(`input[id^="${pkgId}"]`);
+              siblings.forEach(s => {
+                if (s !== e.target) s.checked = false;
+              });
+            }
+            calculateTotal();
+          });
+        }
+      });
+
+      calculateTotal();
+
+      // Submit -> build summary -> send to Formspree
+      orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const data = {
+          name: document.getElementById('name').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          date_needed: document.getElementById('date_needed').value.trim(),
+          notes: document.getElementById('notes').value.trim(),
+          total: document.getElementById('totalDisplay').textContent,
+          items: []
+        };
+
+        // Collect items
+        document.querySelectorAll('.total-calc').forEach(input => {
+          const priceAttr = input.getAttribute('data-price');
+          const price = priceAttr ? parseFloat(priceAttr) : 0;
+
+          if (input.type === 'number') {
+            const qty = parseInt(input.value, 10) || 0;
+            if (qty > 0) {
+              let itemName = input.id;
+              const dozenMatch = prices.dozen.find(d => d.id === input.id);
+              const boxMatch = prices.treatboxes.find(b => b.id === input.id);
+              if (dozenMatch) itemName = dozenMatch.name;
+              if (boxMatch) itemName = boxMatch.name;
+
+              data.items.push({
+                type: 'Item',
+                item: itemName,
+                quantity: qty,
+                price_per_unit: price
+              });
+            }
+          }
+
+          if (input.type === 'checkbox' && input.checked && input.name === 'package-selection') {
+            const pkgId = input.id.substring(0, input.id.lastIndexOf('-'));
+            const pkg = prices.packages.find(p => p.id === pkgId);
+            if (pkg) {
+              let name = pkg.name;
+              if (input.id.endsWith('-gf')) {
+                name += ' (Gluten Free)';
+              } else {
+                name += ' (Classic)';
+              }
+              data.items.push({
+                type: 'Package',
+                item: name,
+                quantity: 1,
+                price_per_unit: price
+              });
+            }
+          }
+        });
+
+        // Build summary string
+        let summary = '';
+        summary += `Name: ${data.name}\n`;
+        summary += `Email: ${data.email}\n`;
+        if (data.phone) summary += `Phone: ${data.phone}\n`;
+        summary += `Date Needed: ${data.date_needed}\n\n`;
+
+        summary += `--- Order Items ---\n`;
+        if (data.items.length === 0) {
+          summary += `No items selected (please review).\n`;
+        } else {
+          data.items.forEach(item => {
+            const itemTotal = item.quantity * item.price_per_unit;
+            summary += `${item.quantity} x ${item.item} @ $${item.price_per_unit.toFixed(2)} (Total: $${itemTotal.toFixed(2)})\n`;
+          });
+        }
+
+        summary += `\nEstimated Total: ${data.total}\n`;
+        if (data.notes) {
+          summary += `\nNotes:\n${data.notes}\n`;
+        }
+
+        // Fill hidden fields for Formspree
+        document.getElementById('hiddenTotal').value = data.total;
+        document.getElementById('hiddenSummary').value = summary;
+
+        // Submit to Formspree
+        orderForm.submit();
+      });
+    }
+
+    window.onload = initOrderForm;
+  </script>
+</body>
+</html>
