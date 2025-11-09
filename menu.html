@@ -21,7 +21,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="treats.html">Cookies & Cupcakes</a></li>
         <li><a class="active" href="menu.html">Menu</a></li>
-        <li><a href="#inquiry">Order Inquiry</a></li>
+        <a href="order.html">Order Inquiry</a>
       </ul>
     </nav>
   </div>
@@ -142,85 +142,55 @@
     </p>
   </section>
 
-    <!-- Full PDF menu link -->
-  <section class="section container center">
-    <h3 class="menu-group-title">View the Full Printable Menu</h3>
-    <p class="note">
-      See all treats, details, and packages in one place. Perfect for sharing or saving for later.
-    </p>
+<section class="section container center">
+  <h2>Menu Snapshot</h2>
+  <p>
+    Here’s a quick peek at Tina’s delicious creations.  
+    You can view or download the full printable menu below for all treats, pricing, and packages.
+  </p>
+
+  <!-- Menu preview image -->
+  <img
+    class="menu-image"
+    src="assets/img/menu-preview.png"
+    alt="Tina's Tempting Treats full menu preview"
+  />
+
+  <!-- Button links -->
+  <div style="margin-top:1rem">
     <a
-      href="assets/docs/tinas-tempting-treats-menu.pdf"
       class="btn"
+      href="assets/docs/tinas-tempting-treats-menu.pdf"
       target="_blank"
       rel="noopener"
     >
       View / Download Full Menu (PDF)
     </a>
-  </section>
+  </div>
+</section>
 </main>
 
-<section id="inquiry" class="section container">
+<section id="inquiry" class="section container center">
   <h2>Order Inquiry</h2>
-  <form id="order-inquiry-form" class="form">
-    <div class="row">
-      <div>
-        <label for="name">Your name</label>
-        <input id="name" name="name" placeholder="Jane Doe" required />
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@email.com" required />
-      </div>
-    </div>
+  <p>
+    Ready to place an order or get a quote for your custom treats?
+    Fill out our detailed order form below — it only takes a minute!
+  </p>
 
-    <div class="row">
-      <div>
-        <label for="phone">Phone (optional)</label>
-        <input id="phone" name="phone" placeholder="(412) 555-0123" />
-      </div>
-      <div>
-        <label for="category">What are you ordering?</label>
-        <select id="category" name="category">
-          <option>Cookies</option>
-          <option>Cupcakes</option>
-          <option>Brownies</option>
-          <option>Other</option>
-        </select>
-      </div>
-    </div>
+  <div style="margin-top: 1.5rem;">
+    <a class="btn" href="order.html">Go to Order Form</a>
+  </div>
 
-    <div class="row">
-      <div>
-        <label for="qty">Quantity</label>
-        <input id="qty" name="qty" type="number" min="1" step="1" value="12" />
-      </div>
-      <div>
-        <label for="fulfillment">Pickup or delivery?</label>
-        <select id="fulfillment" name="fulfillment">
-          <option>Pickup</option>
-          <option>Delivery</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="eventDate">Event date (optional)</label>
-        <input id="eventDate" name="eventDate" type="date" />
-      </div>
-      <div>
-        <label for="details">Details</label>
-        <textarea id="details" name="details" placeholder="Flavors, themes, allergens, preferred pickup time…"></textarea>
-        <small>Submitting will open your email with details pre-filled (or send directly if you plug in Formspree later).</small>
-      </div>
-    </div>
-
-    <div class="actions center">
-      <button class="btn" type="submit">Send Inquiry</button>
-      <a class="btn" href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry">Email Tina directly</a>
-    </div>
-  </form>
+  <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b5950;">
+    Prefer to reach out directly?
+    <a href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry"
+       style="color: var(--brand-brown); font-weight: 600;">
+      Email Tina
+    </a>
+    or call (412) 337-5866.
+  </p>
 </section>
+
 
 
 <footer>
