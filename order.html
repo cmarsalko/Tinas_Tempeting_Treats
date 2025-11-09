@@ -87,51 +87,61 @@
       method="POST"
       class="space-y-8"
     >
-      <!-- Formspree email subject -->
-      <input type="hidden" name="_subject" value="New Tina's Tempting Treats Order Request">
+            <!-- Formspree email subject -->
+        <input type="hidden" name="_subject" value="New Tina's Tempting Treats Order Request">
 
-      <!-- Hidden fields populated by JS before submit -->
-      <input type="hidden" name="order_total" id="hiddenTotal">
-      <input type="hidden" name="order_details" id="hiddenSummary">
+        <!-- Hidden fields populated by JS before submit -->
+        <input type="hidden" name="order_total" id="hiddenTotal">
+        <input type="hidden" name="order_details" id="hiddenSummary">
 
-      <!-- Your Details -->
-      <div class="mb-2 p-4 bg-pink-50 rounded-lg border border-pink-200">
+        <!-- Your Details -->
+        <div class="mb-2 p-4 bg-pink-50 rounded-lg border border-pink-200">
         <h2 class="text-2xl font-bold text-pink-600 mb-4">Your Details</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
+            
+            <!-- Full Name -->
+            <input
             type="text"
             id="name"
             name="name"
             placeholder="Full Name"
             required
             class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-          >
-          <input
+            >
+
+            <!-- Email -->
+            <input
             type="email"
             id="email"
             name="email"
             placeholder="Email Address"
             required
             class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-          >
-          <input
+            >
+
+            <!-- Phone -->
+            <input
             type="tel"
             id="phone"
             name="phone"
             placeholder="Phone Number (Optional)"
             class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-          >
-                <input
-        type="date"
-        id="date_needed"
-        name="date_needed"
-        required
-        class="p-2 border border-pink-300 rounded-lg bg-white focus:ring-pink-400 focus:border-pink-400"
-        />
+            >
 
+            <!-- Date Needed -->
+            <div>
+            <input
+                type="date"
+                id="date_needed"
+                name="date_needed"
+                required
+                class="p-2 border border-pink-300 rounded-lg bg-white focus:ring-pink-400 focus:border-pink-400 w-full"
+            >
+            <p class="text-pink-600 font-semibold text-sm mt-1">Date Needed</p>
+            </div>
 
         </div>
-      </div>
+        </div>
 
       <!-- Items Sections -->
       <div>
