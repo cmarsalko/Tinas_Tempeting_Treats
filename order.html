@@ -17,15 +17,6 @@
   <link rel="icon" href="assets/img/logo_white.png">
 
   <style>
-    header {
-      background: transparent !important;
-      box-shadow: none !important;
-    }
-    .nav-wrapper {
-      width: 100%;
-      background: var(--brand-pink);
-      border-radius: 1rem;
-    }
     .nav-wrapper {
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem;
@@ -65,28 +56,23 @@
   </style>
 </head>
 
-<body class="p-4 sm:p-8">
+<body>
 
-  <header class="mt-4">
-    <div class="nav-wrapper rounded-b-xl shadow-md overflow-hidden">
-      <div class="container flex items-center justify-between py-3">
-        <a class="brand" href="index.html">
-          <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
-        </a>
-
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="treats.html">Cookies & Cupcakes</a></li>
-            <li><a href="menu.html">Menu</a></li>
-          </ul>
-        </nav>
-      </div>
+  <header>
+    <div class="container nav">
+          <a class="brand" href="index.html">
+        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+        <h1>Tina's Tempting Treats</h1>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="treats.html">Cookies & Cupcakes</a></li>
+          <li><a href="menu.html">Menu</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
-
-
-
 
   <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
 
