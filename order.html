@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <title>Tina's Tempting Treats — Order Inquiry</title>
 
   <!-- Tailwind CDN -->
@@ -15,12 +17,26 @@
   <link rel="icon" href="assets/img/logo_white.png">
 
   <style>
+    header {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .nav-wrapper {
+      width: 100%;
+      background: var(--brand-pink);
+      border-radius: 1rem;
+    }
+    .nav-wrapper {
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
     .treat-font {
       font-family: 'Pacifico', cursive;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fce7f3; /* light pink */
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--cream); 
     }
     .section-title {
       background-color: #4dc0c5;
@@ -51,10 +67,30 @@
 
 <body class="p-4 sm:p-8">
 
+  <header class="mt-4">
+    <div class="nav-wrapper rounded-b-xl shadow-md overflow-hidden">
+      <div class="container flex items-center justify-between py-3">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+        </a>
+
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="treats.html">Cookies & Cupcakes</a></li>
+            <li><a href="menu.html">Menu</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+
+
   <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
 
     <!-- Header / Branding -->
-    <header class="text-center mb-8 border-b-2 border-pink-100 pb-4">
       <div class="flex flex-col md:flex-row items-center justify-center md:space-x-6 gap-4">
         <img
           src="assets/img/Tina's Tempting Treats.png"
@@ -78,7 +114,6 @@
 
         </div>
       </div>
-    </header>
 
     <!-- ORDER FORM (Formspree integrated) -->
     <form
