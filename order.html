@@ -4,14 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <title>Tina's Tempting Treats — Order Inquiry</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Your site styles LAST so they override Tailwind -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <title>Tina's Tempting Treats — Order Inquiry</title>
 
   <!-- Favicon (optional, match rest of site) -->
   <link rel="icon" href="assets/img/logo_white.png">
@@ -52,6 +55,51 @@
     }
     .bg-fcf4f9 {
       background-color: #fcf4f9;
+    }
+
+    /* Valentine Spotlight */
+    .valentine-spotlight {
+      border: 2px solid #fb7185;              /* rose-400 */
+      background: linear-gradient(135deg, #fff1f2, #ffffff);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: 0 12px 30px rgba(251, 113, 133, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle hearts / confetti effect */
+    .valentine-spotlight::before {
+      content: "❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 1.75rem;
+      opacity: 0.12;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .valentine-title {
+      font-weight: 900;
+      color: #be123c;                         /* rose-700 */
+      font-size: 1.25rem;
+      letter-spacing: 0.2px;
+    }
+
+    .valentine-deadline {
+      color: #be123c;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    /* Make Valentine items slightly punchier than the rest */
+    .valentine-spotlight .input-qty {
+      border-color: #fb7185;
+    }
+    .valentine-spotlight .input-qty:focus {
+      border-color: #f43f5e;
+      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.35);
     }
   </style>
 </head>
@@ -172,6 +220,19 @@
 
         <hr class="mb-8 border-pink-200">
 
+        <!-- Valentine's Day Limited-Time Menu -->
+        <section class="valentine-spotlight mb-8">
+          <div class="valentine-header">
+            <h2 class="valentine-title">Valentine’s Day Limited-Time Menu</h2>
+          </div>
+
+          <p class="valentine-deadline">⏰ Orders close February 1 — don’t wait!</p>
+
+          <div id="valentineItems" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <hr class="mb-8 border-pink-200">
+
         <!-- Holiday Treat Boxes -->
         <h2 class="section-title">Holiday Treat Boxes</h2>
         <div id="treatBoxItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
@@ -248,7 +309,23 @@
         { id: "dozen-chocbrowniecookiebites", price: 15.00, name: "Chocolate Brownie Bites" },
         { id: "dozen-GFcookiebites",         price: 18.00, name: "GF Chocolate Brownie Bites" },
         { id: "dozen-pumpkinchipcookiebites",   price: 15.00, name: "Pumpkin Chocolate Chip Cookie Bites (w/ Cream Cheese Icing)" }
+        
       ],
+      valentine: [
+        { id: "valentine-red-velvet-bouquet-classic", price: 30.00, name: "Red Velvet Cake Pop Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
+        { id: "valentine-red-velvet-cakepops-only",   price: 25.00, name: "Red Velvet Cake Pops Only (Dozen)", unitLabel: "Dozen" },
+
+        { id: "valentine-marshmallow-bouquet",        price: 28.00, name: "Chocolate Covered Marshmallow Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
+        { id: "valentine-marshmallows-only",          price: 23.00, name: "Chocolate Covered Marshmallows Only (Dozen)", unitLabel: "Dozen" },
+
+        { id: "valentine-oreo-treat-box-4",           price: 14.00, name: "Valentine Oreo Treat Box (4)", unitLabel: "Box" },
+        { id: "valentine-buckeye-treat-box-5",        price: 15.00, name: "Buckeye Treat Box (5)", unitLabel: "Box" },
+        { id: "valentine-bukeye-ball-treat-Dozen",    price: 22.00, name: "Buckeye Treat Box (Dozen)", unitLabel: "Dozen"},
+
+        { id: "valentine-cheesecake-bites-cherry",    price: 20.00, name: "Cheesecake Bites — Cherry (Dozen)", unitLabel: "Dozen" },
+        { id: "valentine-cheesecake-bites-raspberry", price: 20.00, name: "Cheesecake Bites — Raspberry (Dozen)", unitLabel: "Dozen" }
+      ],
+
       treatboxes: [
         { id: "box-oreos",          price: 12.00, name: "Four Chocolate Dipped Oreo Box" },
         { id: "box-oreos-gf",       price: 15.00, name: "Gluten Free Oreo Box" },
@@ -297,7 +374,8 @@
     function renderDozenItem(item, index) {
       const bgColorClass = (index % 2 === 0) ? 'bg-fcf4f9' : 'bg-white';
       const isDozen = item.id.startsWith('dozen');
-      const unitLabel = isDozen ? 'Dozen' : 'Box';
+      const isBox = item.id.startsWith('box');
+      const unitLabel = item.unitLabel || (isDozen ? 'Dozen' : (isBox ? 'Box' : 'Each'));
 
       return `
         <div class="flex items-center justify-between p-3 border border-pink-100 rounded-lg ${bgColorClass}">
@@ -380,13 +458,18 @@
 
     // ---- Init ----
     function initOrderForm() {
-      const dozenItemsContainer = document.getElementById('dozenItems');
-      const treatBoxItemsContainer = document.getElementById('treatBoxItems');
-      const packageItemsContainer = document.getElementById('packageItems');
-      const orderForm = document.getElementById('orderForm');
+    const dozenItemsContainer = document.getElementById('dozenItems');
+    const valentineItemsContainer = document.getElementById('valentineItems');
+    const treatBoxItemsContainer = document.getElementById('treatBoxItems');
+    const packageItemsContainer = document.getElementById('packageItems');
+    const orderForm = document.getElementById('orderForm');
 
+    
       // Render items
       dozenItemsContainer.innerHTML = prices.dozen.map(renderDozenItem).join('');
+      if (valentineItemsContainer) {
+        valentineItemsContainer.innerHTML = prices.valentine.map(renderDozenItem).join('');
+      }
       treatBoxItemsContainer.innerHTML = prices.treatboxes.map(renderDozenItem).join('');
       packageItemsContainer.innerHTML = prices.packages.map(renderPackageItem).join('');
 
@@ -436,8 +519,10 @@
             if (qty > 0) {
               let itemName = input.id;
               const dozenMatch = prices.dozen.find(d => d.id === input.id);
+              const valentineMatch = prices.valentine.find(v => v.id === input.id);
               const boxMatch = prices.treatboxes.find(b => b.id === input.id);
               if (dozenMatch) itemName = dozenMatch.name;
+              if (valentineMatch) itemName = valentineMatch.name;
               if (boxMatch) itemName = boxMatch.name;
 
               data.items.push({
