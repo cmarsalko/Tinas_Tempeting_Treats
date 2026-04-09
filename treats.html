@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tina's Tempting Treats — Cookies & Cupcakes</title>
-  <meta name="description" content="Browse cookies, cupcakes, brownies and more — pricing and flavors." />
+  <title>Tina's Tempting Treats — Cookies &amp; Cupcakes</title>
+  <meta name="description" content="Browse cookies, cupcakes, brownies and more — flavors and pricing." />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/logo_white.png" />
 </head>
 <body>
+
+<!-- ══════════ NAVIGATION ══════════ -->
 <header>
   <div class="container nav">
-        <a class="brand" href="index.html">
+    <a class="brand" href="index.html">
       <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
       <h1>Tina's Tempting Treats</h1>
     </a>
-
     <nav aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="treats.html">Cookies & Cupcakes</a></li>
+        <li><a  href="index.html">Home</a></li>
+        <li><a class="active" href="treats.html">Dessert Bites &amp; Treats</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="order.html">Order Inquiry</a></li>
       </ul>
@@ -27,89 +28,153 @@
   </div>
 </header>
 
-<main class="container section">
-<h2>Explore the Tempting Treats...</h2>
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="cookies">Cookies</button>
-    <button class="filter-btn" data-filter="cupcakes">Cupcakes</button>
-    <button class="filter-btn" data-filter="brownies">Brownies</button>
-    <button class="filter-btn" data-filter="seasonal">Seasonal</button>
-  </div>
+<main>
 
-  <div class="grid gallery">
-    <!-- COOKIES -->
-    <article class="card" data-category="cookies">
-      <div class="img" style="background-image:url('assets/img/cookies-1.jpg')"></div>
-      <h3>Chocolate Chip</h3>
-      <div class="meta"><span>Half-dozen / dozen</span><span class="price">$8 / $15</span></div>
-    </article>
+  <!-- ══════════ PAGE HERO ══════════ -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <h2>Dessert Bites &amp; Treats</h2>
+      <p>Classic favorites and seasonal specials — baked fresh and made to order for any occasion.</p>
+    </div>
+  </section>
 
-    <article class="card" data-category="cookies seasonal">
-      <div class="img" style="background-image:url('assets/img/sugar-1.jpg')"></div>
-      <h3>Decorated Sugar (Seasonal)</h3>
-      <div class="meta"><span>Custom themes</span><span class="price">from $24 / doz</span></div>
-    </article>
+  <!-- ══════════ GALLERY ══════════ -->
+  <section class="section">
+    <div class="container">
 
-    <!-- CUPCAKES -->
-    <article class="card" data-category="cupcakes">
-      <div class="img" style="background-image:url('assets/img/cupcakes-1.jpg')"></div>
-      <h3>Vanilla Bean Cupcakes</h3>
-      <div class="meta"><span>Box of 6</span><span class="price">$18</span></div>
-    </article>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Treats</button>
+        <button class="filter-btn" data-filter="cookies">Cookie Bites</button>
+        <button class="filter-btn" data-filter="cheesecakes">Cheesecake Bites</button>
+        <button class="filter-btn" data-filter="dipped-treats">Dipped Treats</button>
+        <button class="filter-btn" data-filter="cake-pops">Cake Pops</button>
+        <button class="filter-btn" data-filter="seasonal">Seasonal</button>
+      </div>
 
-    <article class="card" data-category="cupcakes seasonal">
-      <div class="img" style="background-image:url('assets/img/cupcakes-2.jpg')"></div>
-      <h3>Chocolate Ganache (Seasonal)</h3>
-      <div class="meta"><span>Box of 6</span><span class="price">$22</span></div>
-    </article>
+      <div class="grid gallery">
 
-    <!-- BROWNIES -->
-    <article class="card" data-category="brownies">
-      <div class="img" style="background-image:url('assets/img/brownies-1.jpg')"></div>
-      <h3>Fudgy Brownies</h3>
-      <div class="meta"><span>8x8 pan</span><span class="price">$14</span></div>
-    </article>
+        <!-- COOKIES -->
+        <article class="card" data-category="cookies">
+          <div class="img" style="background-image:url('assets/img/choc_chip.png')"></div>
+          <h3>Chocolate Chip Cookie Bites <span class="note"> (Gluten Free Available)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$15</span></div>
+        </article>
 
-    <!-- SEASONAL / OTHER -->
-    <article class="card" data-category="seasonal">
-      <div class="img" style="background-image:url('assets/img/pumpkin-1.jpg')"></div>
-      <h3>Pumpkin Spice Bars</h3>
-      <div class="meta"><span>8x8 pan</span><span class="price">$16</span></div>
-    </article>
-  </div>
+        <article class="card" data-category="cookies">
+          <div class="img" style="background-image:url('assets/img/sugar_cookies.png')"></div>
+          <h3>Decorated Sugar Cookie Bites <span class="note"> (Gluten Free Available)</span></h3>
+          <div class="meta"><span>Custom themes</span><span class="price">from $15 / doz</span></div>
+        </article>
 
-  <div class="center" style="margin-top:1.4rem">
-    <a class="btn" href="index.html#inquiry">Request a custom flavor</a>
-  </div>
+        <article class="card" data-category="cookies">
+          <div class="img" style="background-image:url('assets/img/reeses_bites.heic')"></div>
+          <h3>Reese's Cookie Bites <span class="note">(Gluten Free Available)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$15</span></div>
+        </article>
+
+        <article class="card" data-category="cookies">
+          <div class="img" style="background-image:url('assets/img/brownie_bites.heic')"></div>
+          <h3>Brownie Bites <span class="note">(Gluten Free Available)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$15</span></div>
+        </article>
+
+        <article class="card" data-category="seasonal">
+          <div class="img" style="background-image:url('assets/img/smores.heic')"></div>
+          <h3>Smore's Cookie Bites <span class="note">(Seasonal)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$15</span></div>
+        </article>
+
+        <article class="card" data-category="seasonal">
+          <div class="img" style="background-image:url('assets/img/pumpkin_choc_chip.HEIC')"></div>
+          <h3>Pumpkin Chocolate Chip Cookie Bites <span class="note">(Seasonal)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$15</span></div>
+        </article>
+
+        <!-- DIPPED TREATS -->
+        <article class="card" data-category="dipped-treats">
+          <div class="img" style="background-image:url('assets/img/rice_krispies2.png')"></div>
+          <h3>Chocolate Dipped Rice Krispie Treats</h3>
+          <div class="meta"><span>Dozen</span><span class="price">$22</span></div>
+        </article>
+
+        <article class="card" data-category="dipped-treats">
+          <div class="img" style="background-image:url('assets/img/nutter_butter.png')"></div>
+          <h3>Chocolate Dipped Nutter-Butters</h3>
+          <div class="meta"><span>Dozen</span><span class="price">$22</span></div>
+        </article>
+
+        <article class="card" data-category="dipped-treats">
+          <div class="img" style="background-image:url('assets/img/pretzels2.png')"></div>
+          <h3>Chocolate Dipped Pretzels <span class="note">(Available in Twists or Rods)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$22</span></div>
+        </article>
+
+        <article class="card" data-category="dipped-treats">
+          <div class="img" style="background-image:url('assets/img/oreos2.png')"></div>
+          <h3>Chocolate Dipped Oreos <span class="note">(Gluten Free Available)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$22</span></div>
+        </article>
+
+        <!-- CHEESECAKE BITES -->
+        <article class="card" data-category="cheesecakes">
+          <div class="img" style="background-image:url('assets/img/cheesecake_bites.heic')"></div>
+          <h3>Cheesecake Bites with Grahm Cracker Crust <span class="note">(Available in Cherry, Raspberry, Blueberry, Strawberry , and Gluten Free)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$20</span></div>
+        </article>
+
+        <article class="card" data-category="seasonal">
+          <div class="img" style="background-image:url('assets/img/mm_cheesecake.heic')"></div>
+          <h3>Crushed M&M Cheesecake Bites with Cadbury Eggs and Oreo Crust <span class="note">(Seasonal)</span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$20</span></div>
+        </article>
+
+        <!-- CAKE POPS -->
+        <article class="card" data-category="cake-pops">
+          <div class="img" style="background-image:url('assets/img/cake_pops2.png')"></div>
+          <h3>Themed Cake Pops <span class="note"></span></h3>
+          <div class="meta"><span>Dozen</span><span class="price">$25</span></div>
+        </article>
+
+      </div>
+
+      <div class="center" style="margin-top:2.5rem">
+        <a class="btn btn-outline" href="order.html">Request a Custom Flavor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ORDER CTA ══════════ -->
+  <section class="band-dark">
+    <div class="container">
+      <h2>Don't see what you're looking for?</h2>
+      <p>Custom flavors and seasonal creations are always available — reach out and Tina will work with you to create something special.</p>
+      <a class="btn" href="order.html">Submit an Order Inquiry</a>
+      <div class="contact-nudge">
+        Or contact Tina directly:
+        <a href="mailto:tinastemptingtreats@gmail.com?subject=Custom%20Order%20Inquiry">tinastemptingtreats@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:4123375866">(412) 337-5866</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<section id="inquiry" class="section container center">
-  <h2>Order Inquiry</h2>
-  <p>
-    Ready to place an order or get a quote for your custom treats?
-    Fill out our detailed order form below — it only takes a minute!
-  </p>
-
-  <div style="margin-top: 1.5rem;">
-    <a class="btn" href="order.html">Go to Order Form</a>
-  </div>
-
-  <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b5950;">
-    Prefer to reach out directly?
-    <a href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry"
-       style="color: var(--brand-brown); font-weight: 600;">
-      Email Tina
-    </a>
-    or call (412) 337-5866.
-  </p>
-</section>
-
-
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="container">
-    <div class="brandline">
-      <strong>Tina's Tempting Treats</strong> • Pittsburgh, PA • <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats" />
+        <span>Tina's Tempting Treats</span>
+      </div>
+      <div class="footer-info">
+        Pittsburgh, PA
+        <span class="separator">•</span>
+        <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+        <span class="separator">•</span>
+        <a href="tel:4123375866">(412) 337-5866</a>
+      </div>
     </div>
   </div>
 </footer>

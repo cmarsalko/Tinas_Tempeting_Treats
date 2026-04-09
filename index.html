@@ -4,21 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tina's Tempting Treats — Home</title>
-  <meta name="description" content="Homemade cookies, cupcakes, and custom desserts — baked with love in Pittsburgh." />
+  <meta name="description" content="Handcrafted chocolate-dipped treats made fresh in Pittsburgh. Custom orders, party packages, and more." />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/logo_white.png" />
 </head>
 <body>
+
+<!-- ══════════ NAVIGATION ══════════ -->
 <header>
-      <div class="container nav">
-      <a class="brand" href="index.html">
-        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
-        <h1>Tina's Tempting Treats</h1>
-      </a>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+      <h1>Tina's Tempting Treats</h1>
+    </a>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="treats.html">Cookies & Cupcakes</a></li>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="treats.html">Dessert Bites &amp; Treats</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="order.html">Order Inquiry</a></li>
       </ul>
@@ -27,103 +29,161 @@
 </header>
 
 <main>
-    <section class="hero container">
-    <div class="hero-text">
-      <h2 class="title">Baked fresh. Made with love. 🍪🧁</h2>
-      <p>From classic chocolate chip cookies to swirled buttercream cupcakes — explore Tina's family-favorite recipes. Custom flavors and party orders welcomed!</p>
-      <p><a class="btn" href="treats.html">Browse cookies & cupcakes</a></p>
-    </div>
 
-    <div class="hero-img" role="img" aria-label="Tina baking in the kitchen"></div>
-  </section>
-
-
-  <section class="section container">
-    <h2>Featured Bakes</h2>
-    <div class="grid gallery">
-      <!-- Replace image URLs in style with your real photos in /assets/img/ -->
-      <article class="card">
-        <div class="img" style="background-image:url('assets/img/cookies-1.jpg')"></div>
-        <h3>Chocolate Chip Cookies</h3>
-        <div class="meta"><span>Half-dozen / dozen</span><span class="price">$8 / $15</span></div>
-      </article>
-
-      <article class="card">
-        <div class="img" style="background-image:url('assets/img/cupcakes-1.jpg')"></div>
-        <h3>Vanilla Bean Cupcakes</h3>
-        <div class="meta"><span>Box of 6</span><span class="price">$18</span></div>
-      </article>
-
-      <article class="card">
-        <div class="img" style="background-image:url('assets/img/sugar-1.jpg')"></div>
-        <h3>Decorated Sugar Cookies</h3>
-        <div class="meta"><span>Custom themes</span><span class="price">from $24 / doz</span></div>
-      </article>
-
-      <article class="card">
-        <div class="img" style="background-image:url('assets/img/brownies-1.jpg')"></div>
-        <h3>Fudgy Brownies</h3>
-        <div class="meta"><span>8x8 pan</span><span class="price">$14</span></div>
-      </article>
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <div class="hero-inner container">
+      <div class="hero-text">
+        <span class="hero-eyebrow">✦ Handcrafted in Pittsburgh, PA</span>
+        <h1>Chocolate-dipped<br>treats made<br><em>with love.</em></h1>
+        <p>From silky dipped Oreos and cake pops to custom party packages — every piece is made fresh and beautifully decorated, just for you.</p>
+        <div class="hero-cta">
+          <a class="btn" href="menu.html">Browse the Menu</a>
+          <a class="btn btn-ghost" href="order.html">Place an Order</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <img src="assets/img/hero.jpg" alt="Tina's beautiful chocolate treats"
+               onerror="this.parentElement.innerHTML='<div class=\'hero-frame-placeholder\'>🍫</div>'" />
+        </div>
+      </div>
     </div>
   </section>
 
-<section class="section container center">
-  <h2>Menu Snapshot</h2>
-  <p>
-    Here’s a quick peek at Tina’s delicious creations.  
-    You can view or download the full printable menu below for all treats, pricing, and packages.
-  </p>
+  <!-- ══════════ WHAT WE MAKE ══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Our Specialties</span>
+        <h2>Made to impress every occasion</h2>
+        <p>Every treat is hand-dipped in rich chocolate, decorated to order, and crafted with care for parties, gifts, and celebrations.</p>
+      </div>
+      <div class="specialties">
+        <div class="specialty-item">
+          <div class="specialty-icon">🍪</div>
+          <h3>Dipped Oreos</h3>
+          <p>Classic and GF Oreos dipped in your choice of colors &amp; sprinkles.</p>
+        </div>
+        <div class="specialty-item">
+          <div class="specialty-icon">🍭</div>
+          <h3>Cake Pops</h3>
+          <p>Decorated cake pops perfect for showers, birthdays &amp; more.</p>
+        </div>
+        <div class="specialty-item">
+          <div class="specialty-icon">🥨</div>
+          <h3>Dipped Pretzels</h3>
+          <p>Sweet &amp; salty pretzel rods and twists dipped to perfection.</p>
+        </div>
+        <div class="specialty-item">
+          <div class="specialty-icon">🎁</div>
+          <h3>Party Packages</h3>
+          <p>Curated treat packages from $60 — perfect for any event size.</p>
+        </div>
+        <div class="specialty-item">
+          <div class="specialty-icon">🍬</div>
+          <h3>Rice Krispies</h3>
+          <p>Bite-size dipped cereal treats in custom colors and designs.</p>
+        </div>
+        <div class="specialty-item">
+          <div class="specialty-icon">✨</div>
+          <h3>Custom Themes</h3>
+          <p>Edible images, custom colors, and themed designs available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Menu preview image -->
-  <img
-    class="menu-image"
-    src="assets/img/menu-preview.png"
-    alt="Tina's Tempting Treats full menu preview"
-  />
+  <!-- ══════════ FEATURED BAKES ══════════ -->
+  <section class="section band-pink">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Fan Favorites</span>
+        <h2>Featured Treats</h2>
+        <p>A taste of what Tina makes — browse all treats or jump straight to the menu.</p>
+      </div>
+      <div class="grid gallery">
+        <article class="card">
+          <div class="img" style="background-image:url('assets/img/dipped_oreos.png')"></div>
+          <h3>Chocolate-Dipped Oreos</h3>
+          <div class="meta"><span>Per dozen</span><span class="price">$22</span></div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('assets/img/cake_pops.HEIC')"></div>
+          <h3>Cake Pops</h3>
+          <div class="meta"><span>Per dozen</span><span class="price">$25</span></div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('assets/img/dipped_pretzels.png')"></div>
+          <h3>Dipped Pretzels</h3>
+          <div class="meta"><span>Rods or Twists</span><span class="price">$22</span></div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('assets/img/rice_krispies.jpg')"></div>
+          <h3>Mini Rice Krispies</h3>
+          <div class="meta"><span>Per dozen</span><span class="price">$22</span></div>
+        </article>
+      </div>
+      <div class="center" style="margin-top:2.5rem">
+        <a class="btn" href="menu.html">View Full Menu</a>
+        <a class="btn btn-outline" href="treats.html">Cookies &amp; Cupcakes</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Button links -->
-  <div style="margin-top:1rem">
-    <a
-      class="btn"
-      href="assets/docs/tinas-tempting-treat-menu.pdf"
-      target="_blank"
-      rel="noopener"
-    >
-      View / Download Full Menu (PDF)
-    </a>
-    <a class="btn" href="menu.html">Open Menu Page</a>
-  </div>
-</section>
+  <!-- ══════════ MENU SNAPSHOT ══════════ -->
+  <section class="section">
+    <div class="container center">
+      <div class="section-heading">
+        <span class="eyebrow">Printable Menu</span>
+        <h2>Full Menu &amp; Pricing</h2>
+        <p>View or download the complete printable menu with all treats, packages, and pricing.</p>
+      </div>
+      <img
+        class="menu-image"
+        src="assets/img/menu-preview.png"
+        alt="Tina's Tempting Treats full menu preview"
+      />
+      <div style="margin-top:0.5rem">
+        <a class="btn" href="assets/pdf/tinas-tempting-treat-menu.pdf" target="_blank" rel="noopener">
+          View / Download Menu (PDF)
+        </a>
+        <a class="btn btn-outline" href="menu.html">Open Menu Page</a>
+      </div>
+    </div>
+  </section>
 
-
-  <section id="inquiry" class="section container center">
-  <h2>Order Inquiry</h2>
-  <p>
-    Ready to place an order or get a quote for your custom treats?
-    Fill out our detailed order form below — it only takes a minute!
-  </p>
-
-  <div style="margin-top: 1.5rem;">
-    <a class="btn" href="order.html">Go to Order Form</a>
-  </div>
-
-  <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b5950;">
-    Prefer to reach out directly?
-    <a href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry"
-       style="color: var(--brand-brown); font-weight: 600;">
-      Email Tina
-    </a>
-    or call (412) 337-5866.
-  </p>
-</section>
+  <!-- ══════════ ORDER CTA ══════════ -->
+  <section class="band-dark">
+    <div class="container">
+      <h2>Ready to order?</h2>
+      <p>Fill out our quick order form and Tina will personally follow up to confirm your treats, timeline, and final pricing.</p>
+      <a class="btn" href="order.html">Go to Order Form</a>
+      <div class="contact-nudge">
+        Prefer to reach out directly?
+        <a href="mailto:tinastemptingtreats@gmail.com?subject=Order%20Inquiry">Email Tina</a>
+        or call <a href="tel:4123375866">(412) 337-5866</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="container">
-    <div class="brandline">
-      <strong>Tina's Tempting Treats</strong> • Pittsburgh, PA • <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats" />
+        <span>Tina's Tempting Treats</span>
+      </div>
+      <div class="footer-info">
+        Pittsburgh, PA
+        <span class="separator">•</span>
+        <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+        <span class="separator">•</span>
+        <a href="tel:4123375866">(412) 337-5866</a>
+      </div>
     </div>
   </div>
 </footer>

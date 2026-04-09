@@ -1,591 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tina's Tempting Treats — Order Inquiry</title>
+  <meta name="description" content="Place an order for custom chocolate-dipped treats, party packages, and more." />
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind (for form elements rendered by JS) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
-
-  <!-- Your site styles LAST so they override Tailwind -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-
-  <title>Tina's Tempting Treats — Order Inquiry</title>
-
-  <!-- Favicon (optional, match rest of site) -->
-  <link rel="icon" href="assets/img/logo_white.png">
+  <!-- Site styles (load AFTER Tailwind to allow overrides) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/logo_white.png" />
 
   <style>
-    .nav-wrapper {
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
+    /* ── Page layout ── */
+    html, body { margin: 0; padding: 0; background: var(--cream); }
+
+    /* ── Order page body container ── */
+    .order-page-body {
+      padding: 3rem 0 5rem;
     }
-    .treat-font {
-      font-family: 'Pacifico', cursive;
+
+    /* ── Brand header block ── */
+    .order-brand-block {
+      background: var(--white);
+      border-radius: var(--r-xl);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    html,body{
-      margin:0;
-      padding:0;
-      background:var(--cream); 
+    .order-brand-block img { max-width: 180px; margin: 0 auto 1rem; }
+    .order-brand-block .tagline { color: var(--pink); font-style: italic; font-size: 1rem; margin-bottom: 0.4rem; }
+    .order-brand-block .social  { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .order-brand-block a { color: var(--pink-dark); font-weight: 600; }
+
+    /* ── Main form card ── */
+    .order-form-card {
+      background: var(--white);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
     }
+
+    /* ── Section title pills ── */
     .section-title {
-      background-color: #4dc0c5;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      display: inline-block;
-      margin-bottom: 1rem;
-      font-weight: 700;
+      background: var(--pink) !important;
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem !important;
+      border-radius: 9999px !important;
+      display: inline-block !important;
+      margin-bottom: 1.1rem !important;
+      font-weight: 700 !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.92rem !important;
+      letter-spacing: 0.03em !important;
     }
+
+    /* ── Input styling ── */
     .input-qty {
       width: 70px;
       text-align: center;
-      border: 1px solid #f9a8d4;
-      border-radius: 0.5rem;
-      padding: 0.25rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.3rem;
+      font-family: 'DM Sans', sans-serif;
       transition: all 0.15s ease-in-out;
+      background: var(--cream);
     }
     .input-qty:focus {
-      border-color: #f472b6;
-      box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.5);
-    }
-    .bg-fcf4f9 {
-      background-color: #fcf4f9;
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(232,100,138,0.18);
+      outline: none;
     }
 
-    /* Valentine Spotlight */
+    /* ── Item rows ── */
+    .bg-fcf4f9 { background-color: var(--pink-pale) !important; }
+
+    /* ── Your Details section ── */
+    .details-section {
+      background: var(--pink-pale);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(232,100,138,0.2);
+      margin-bottom: 2rem;
+    }
+    .details-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Total box ── */
+    /* ── Total box ── */
+.total-box {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+  border: 2px solid rgba(232,100,138,0.3);
+  box-shadow: var(--shadow-sm);
+}
+.total-box h3 { color: var(--text); font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 1.4rem; }
+.total-box .total-row { display: flex; justify-content: space-between; align-items: center; }
+.total-box .total-label { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+.total-box #totalDisplay { color: var(--pink); font-size: 2rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+.total-box p { color: var(--text-light); font-size: 0.8rem; margin-top: 0.75rem; }
+
+    /* ── Notes section ── */
+    .notes-section {
+      background: var(--pink-pale);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(232,100,138,0.2);
+    }
+    .notes-section h3 { font-family: 'Playfair Display', serif; color: var(--text); margin-bottom: 0.75rem; font-size: 1.25rem; }
+    .notes-section textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      resize: vertical;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .notes-section textarea:focus {
+      border-color: var(--pink);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(232,100,138,0.15);
+    }
+
+    /* ── Submit section ── */
+    .submit-section {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 2px solid var(--pink-pale);
+      margin-top: 1.5rem;
+    }
+    .submit-section .submit-btn {
+      background: var(--pink);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.75rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .submit-section .submit-btn:hover {
+      background: var(--pink-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,100,138,0.38);
+    }
+    .submit-section p { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.75rem; }
+
+    /* ── Valentine spotlight ── */
     .valentine-spotlight {
-      border: 2px solid #fb7185;              /* rose-400 */
-      background: linear-gradient(135deg, #fff1f2, #ffffff);
-      border-radius: 1.25rem;
-      padding: 1.25rem;
-      box-shadow: 0 12px 30px rgba(251, 113, 133, 0.18);
+      border: 2px solid var(--pink) !important;
+      background: linear-gradient(135deg, #fff0f4, var(--white)) !important;
+      border-radius: var(--r-lg) !important;
+      padding: 1.5rem !important;
+      box-shadow: 0 8px 30px rgba(232,100,138,0.15) !important;
       position: relative;
       overflow: hidden;
     }
-
-    /* subtle hearts / confetti effect */
     .valentine-spotlight::before {
       content: "❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 1.75rem;
-      opacity: 0.12;
-      transform: rotate(12deg);
-      pointer-events: none;
+      position: absolute; top: -10px; right: -10px;
+      font-size: 1.75rem; opacity: 0.1;
+      transform: rotate(12deg); pointer-events: none;
     }
-
     .valentine-title {
-      font-weight: 900;
-      color: #be123c;                         /* rose-700 */
-      font-size: 1.25rem;
-      letter-spacing: 0.2px;
+      font-family: 'Playfair Display', serif !important;
+      font-weight: 700 !important;
+      color: var(--pink-dark) !important;
+      font-size: 1.3rem !important;
+    }
+    .valentine-deadline { color: var(--pink) !important; font-weight: 700 !important; margin-bottom: 1rem !important; font-size: 0.92rem; }
+    .valentine-spotlight .input-qty { border-color: var(--pink); }
+
+    /* ── Package cards ── */
+    .p-4.border-2.border-teal-200.rounded-lg.bg-teal-50 {
+      background: var(--cream) !important;
+      border-color: var(--border) !important;
+      border-radius: var(--r-lg) !important;
+    }
+    .font-bold.text-teal-700 { color: var(--text) !important; }
+    .text-sm.text-gray-600 { color: var(--text-muted) !important; }
+
+    /* ── Form inputs override ── */
+    .p-2.border.border-pink-300.rounded-lg {
+      border-color: var(--border) !important;
+      border-radius: var(--r) !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.92rem !important;
+      padding: 0.65rem 0.85rem !important;
+      transition: border-color 0.2s, box-shadow 0.2s !important;
+    }
+    .p-2.border.border-pink-300.rounded-lg:focus {
+      border-color: var(--pink) !important;
+      box-shadow: 0 0 0 3px rgba(232,100,138,0.15) !important;
+      outline: none !important;
+    }
+    .w-full.p-2.border.border-pink-300.rounded-lg.bg-white {
+      border-color: var(--border) !important;
+      border-radius: var(--r) !important;
+      font-family: 'DM Sans', sans-serif !important;
     }
 
-    .valentine-deadline {
-      color: #be123c;
-      font-weight: 800;
-      margin-bottom: 1rem;
+    /* ── Item row item card ── */
+    .flex.items-center.justify-between.p-3.border.border-pink-100.rounded-lg {
+      border-color: var(--border) !important;
+      border-radius: var(--r) !important;
+      transition: background 0.15s !important;
+    }
+    .flex.items-center.justify-between.p-3.border.border-pink-100.rounded-lg:hover {
+      background: var(--pink-pale) !important;
     }
 
-    /* Make Valentine items slightly punchier than the rest */
-    .valentine-spotlight .input-qty {
-      border-color: #fb7185;
-    }
-    .valentine-spotlight .input-qty:focus {
-      border-color: #f43f5e;
-      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.35);
-    }
+    /* ── HR dividers ── */
+    .border-pink-200 { border-color: var(--border) !important; }
   </style>
 </head>
-
 <body>
 
-  <header>
-    <div class="container nav">
-          <a class="brand" href="index.html">
-        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
-        <h1>Tina's Tempting Treats</h1>
-      </a>
-      <nav aria-label="Primary">
+<!-- ══════════ NAVIGATION ══════════ -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats logo" class="logo-img" />
+      <h1>Tina's Tempting Treats</h1>
+    </a>
+    <nav aria-label="Primary">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="treats.html">Cookies & Cupcakes</a></li>
+        <li><a href="treats.html">Dessert Bites &amp; Treats</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a class="active" href="order.html">Order Inquiry</a></li>
       </ul>
-      </nav> 
-  </header>
+    </nav>
+  </div>
+</header>
 
-  <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
+<!-- ══════════ PAGE HERO ══════════ -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <h2>Order Inquiry</h2>
+    <p>Choose your treats, pick your quantities, and submit — Tina will follow up to confirm every detail.</p>
+  </div>
+</section>
 
-    <!-- Header / Branding -->
-      <div class="flex flex-col md:flex-row items-center justify-center md:space-x-6 gap-4">
-        <img
-          src="assets/img/Tina's Tempting Treats.png"
-          width="200"
-          height="150"
-          alt="Tina's Tempting Treats Logo"
-        >
-        <div class="text-left max-w-md">
-          <p class="text-pink-600 italic">Sweeten the moment with handcrafted treats.</p>
-          <p class="text-pink-600 italic mt-2">
-            Follow on Instagram and Facebook:
-            <a href="https://www.instagram.com/tinastemptingtreats" class="text-blue-500 hover:underline">@tinastemptingtreats</a>
-          </p>
-          <p class="text-sm text-pink-600 mt-2 italic">
-            Contact Info:
-            <a href="mailto:tinastemptingtreats@gmail.com" class="text-blue-500 hover:underline">
-                tinastemptingtreats@gmail.com
-            </a>
-            or call/text (412) 337-5866
-            </p>
+<!-- ══════════ ORDER CONTENT ══════════ -->
+<div class="order-page-body">
+  <div class="container" style="max-width: 860px;">
 
-        </div>
-      </div>
+    <!-- Brand block -->
+    <div class="order-brand-block">
+      <img src="assets/img/logo_pink.png" alt="Tina's Tempting Treats Logo" />
+      <p class="tagline">Sweeten the moment with handcrafted treats.</p>
+      <p class="social">
+        Follow on
+        <a href="https://www.instagram.com/tinastemptingtreats" target="_blank" rel="noopener">@tinastemptingtreats</a>
+        on Instagram &amp; Facebook
+      </p>
+      <p class="social">
+        <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:4123375866">(412) 337-5866</a>
+      </p>
+    </div>
 
-    <!-- ORDER FORM (Formspree integrated) -->
-    <form
-      id="orderForm"
-      action="https://formspree.io/f/xjkjblao"
-      method="POST"
-      class="space-y-8"
-    >
-            <!-- Formspree email subject -->
+    <!-- Main order form card -->
+    <div class="order-form-card">
+
+      <form id="orderForm" action="https://formspree.io/f/xjkjblao" method="POST" class="space-y-8">
+
+        <!-- Hidden Formspree fields -->
         <input type="hidden" name="_subject" value="New Tina's Tempting Treats Order Request">
-
-        <!-- Hidden fields populated by JS before submit -->
-        <input type="hidden" name="order_total" id="hiddenTotal">
+        <input type="hidden" name="order_total"   id="hiddenTotal">
         <input type="hidden" name="order_details" id="hiddenSummary">
 
         <!-- Your Details -->
-        <div class="mb-2 p-4 bg-pink-50 rounded-lg border border-pink-200">
-        <h2 class="text-2xl font-bold text-pink-600 mb-4">Your Details</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            <!-- Full Name -->
-            <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Full Name"
-            required
-            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-            >
-
-            <!-- Email -->
-            <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-            >
-
-            <!-- Phone -->
-            <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Phone Number (Optional)"
-            class="p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-            >
-
-            <!-- Date Needed -->
+        <div class="details-section">
+          <h2>Your Details</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text"  id="name"        name="name"        placeholder="Full Name"                  required class="p-2 border border-pink-300 rounded-lg" />
+            <input type="email" id="email"       name="email"       placeholder="Email Address"              required class="p-2 border border-pink-300 rounded-lg" />
+            <input type="tel"   id="phone"       name="phone"       placeholder="Phone Number (Optional)"            class="p-2 border border-pink-300 rounded-lg" />
             <div>
-            <input
-                type="date"
-                id="date_needed"
-                name="date_needed"
-                required
-                class="p-2 border border-pink-300 rounded-lg bg-white focus:ring-pink-400 focus:border-pink-400 w-full"
-            >
-            <p class="text-pink-600 font-semibold text-sm mt-1">Date Needed</p>
+              <input type="date" id="date_needed" name="date_needed" required class="p-2 border border-pink-300 rounded-lg bg-white focus:ring-pink-400 focus:border-pink-400 w-full" />
+              <p style="color:var(--pink);font-weight:600;font-size:0.85rem;margin-top:0.3rem;">Date Needed</p>
             </div>
-
+          </div>
         </div>
-        </div>
 
-      <!-- Items Sections -->
-      <div>
         <!-- By the Dozen -->
-        <h2 class="section-title">By the Dozen</h2>
-        <div id="dozenItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
+        <div>
+          <h2 class="section-title">By the Dozen</h2>
+          <div id="dozenItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
 
-        <hr class="mb-8 border-pink-200">
-
-        <!-- Valentine's Day Limited-Time Menu -->
-        <section class="valentine-spotlight mb-8">
-          <div class="valentine-header">
-            <h2 class="valentine-title">Valentine’s Day Limited-Time Menu</h2>
-          </div>
-
-          <p class="valentine-deadline">⏰ Orders close February 1 — don’t wait!</p>
-
-          <div id="valentineItems" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </section>
-
-        <hr class="mb-8 border-pink-200">
-
-        <!-- Holiday Treat Boxes -->
-        <h2 class="section-title">Holiday Treat Boxes</h2>
-        <div id="treatBoxItems" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
-
-        <hr class="mb-8 border-pink-200">
-
-        <!-- Party Packages -->
-        <h2 class="section-title">Party Packages</h2>
-        <div id="packageItems" class="space-y-4 mb-10"></div>
-      </div>
-
-      <!-- Total & Notes -->
-      <div class="space-y-6">
-        <!-- Total -->
-        <div class="p-6 bg-teal-50 border-4 border-teal-300 rounded-xl shadow-lg">
-          <h3 class="text-2xl font-bold text-teal-700 mb-4">Order Total (Estimate)</h3>
-          <div class="flex justify-between items-center text-3xl font-extrabold text-teal-900">
-            <span>Total:</span>
-            <span id="totalDisplay">$0.00</span>
-          </div>
-          <p class="text-xs text-teal-700 mt-2">
-            Final total may vary based on custom designs, rush orders, and availability. Tina will confirm everything via email.
-          </p>
+          <hr class="mb-8 border-pink-200">
         </div>
 
-        <!-- Notes -->
-        <div class="p-6 bg-pink-50 rounded-xl border border-pink-200">
-          <h3 class="text-xl font-bold text-pink-600 mb-3">Customization & Notes</h3>
-          <textarea
-            id="notes"
-            name="notes"
-            rows="5"
-            placeholder="Special instructions, colors, themes, packaging, allergies, or customizations (e.g., 'Pink & gold baby shower, gluten free Oreos, add logo toppers')."
-            class="w-full p-2 border border-pink-300 rounded-lg focus:ring-pink-400 focus:border-pink-400"
-          ></textarea>
-        </div>
-      </div>
+        <!-- Total & Notes -->
+        <div class="space-y-6">
 
-      <!-- Submit -->
-      <div class="text-center mt-8 pt-4 border-t-2 border-pink-100">
-        <button
-          type="submit"
-          class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200 ease-in-out transform hover:scale-105"
-        >
-          Submit Order Request
-        </button>
-        <p class="text-sm text-gray-500 mt-2">
-          This submits an order request. Tina will email or text you to confirm details, availability, and final pricing.
-        </p>
-      </div>
-    </form>
+          <!-- Total -->
+          <div class="total-box">
+            <h3>Order Total (Estimate)</h3>
+            <div class="total-row">
+              <span class="total-label">Total:</span>
+              <span id="totalDisplay">$0.00</span>
+            </div>
+            <p>Final total may vary based on custom designs, rush orders, and availability. Tina will confirm everything via email.</p>
+          </div>
+
+          <!-- Notes -->
+          <div class="notes-section">
+            <h3>Customization &amp; Notes</h3>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="5"
+              placeholder="Special instructions, colors, themes, packaging, allergies, or customizations (e.g., 'Pink &amp; gold baby shower, gluten free Oreos, add logo toppers')."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-section">
+          <button type="submit" class="submit-btn">Submit Order Request</button>
+          <p>This submits an order request. Tina will email or text you to confirm details, availability, and final pricing.</p>
+        </div>
+
+      </form>
+    </div>
   </div>
+</div>
 
-  <script>
-    // ---- Pricing Data ----
-    const prices = {
-      dozen: [
-        { id: "dozen-oreos-classic", price: 22.00, name: "Oreos" },
-        { id: "dozen-oreos-gf",      price: 25.00, name: "GF Oreos" },
-        { id: "dozen-cakepops-classic", price: 25.00, name: "Cake Pops" },
-        { id: "dozen-cakepops-gf",      price: 28.00, name: "GF Cake Pops" },
-        { id: "dozen-nutterbutters",    price: 22.00, name: "Nutter Butters" },
-        { id: "dozen-miniricekrispies", price: 22.00, name: "Mini Rice Krispies" },
-        { id: "dozen-pretzels-classic", price: 22.00, name: "Pretzels (Rods & Twists)" },
-        { id: "dozen-pretzels-gf",      price: 25.00, name: "GF Pretzels (Rods & Twists)" },
-        { id: "dozen-chocchipcookiebites",  price: 15.00, name: "Chocolate Chip Cookie Bites" },
-        { id: "dozen-gfchocchipcookiebites",price: 18.00, name: "GF Chocolate Chip Cookie Bites" },
-        { id: "dozen-sugarcookiebites",     price: 15.00, name: "Sugar Cookie Bites" },
-        { id: "dozen-gfsugarcookiebites",   price: 18.00, name: "GF Sugar Cookie Bites" },
-        { id: "dozen-m&mcookiebites",       price: 15.00, name: "M&M Cookie Bites" },
-        { id: "dozen-gfm&mcookiebites",     price: 18.00, name: "GF M&M Cookie Bites" },
-        { id: "dozen-Smorescookiebites",    price: 15.00, name: "Smores Bites" },
-        { id: "dozen-GFSmorescookiebites",  price: 18.00, name: "GF Smores Bites" },
-        { id: "dozen-chocbrowniecookiebites", price: 15.00, name: "Chocolate Brownie Bites" },
-        { id: "dozen-GFcookiebites",         price: 18.00, name: "GF Chocolate Brownie Bites" },
-        { id: "dozen-pumpkinchipcookiebites",   price: 15.00, name: "Pumpkin Chocolate Chip Cookie Bites (w/ Cream Cheese Icing)" }
-        
-      ],
-      valentine: [
-        { id: "valentine-red-velvet-bouquet-classic", price: 30.00, name: "Red Velvet Cake Pop Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
-        { id: "valentine-red-velvet-cakepops-only",   price: 25.00, name: "Red Velvet Cake Pops Only (Dozen)", unitLabel: "Dozen" },
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo_white.png" alt="Tina's Tempting Treats" />
+        <span>Tina's Tempting Treats</span>
+      </div>
+      <div class="footer-info">
+        Pittsburgh, PA
+        <span class="separator">•</span>
+        <a href="mailto:tinastemptingtreats@gmail.com">tinastemptingtreats@gmail.com</a>
+        <span class="separator">•</span>
+        <a href="tel:4123375866">(412) 337-5866</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-        { id: "valentine-marshmallow-bouquet",        price: 28.00, name: "Chocolate Covered Marshmallow Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
-        { id: "valentine-marshmallows-only",          price: 23.00, name: "Chocolate Covered Marshmallows Only (Dozen)", unitLabel: "Dozen" },
+<!-- ══════════ ORDER FORM JAVASCRIPT (all logic preserved) ══════════ -->
+<script>
+  // ---- Pricing Data ----
+  const prices = {
+    dozen: [
+      { id: "dozen-oreos-classic",              price: 22.00, name: "Oreos" },
+      { id: "dozen-oreos-gf",                   price: 25.00, name: "GF Oreos" },
+      { id: "dozen-cakepops-classic",           price: 25.00, name: "Cake Pops" },
+      { id: "dozen-cakepops-gf",                price: 28.00, name: "GF Cake Pops" },
+      { id: "dozen-nutterbutters",              price: 22.00, name: "Nutter Butters" },
+      { id: "dozen-miniricekrispies",           price: 22.00, name: "Mini Rice Krispies" },
+      { id: "dozen-pretzels-classic",           price: 22.00, name: "Pretzels (Rods & Twists)" },
+      { id: "dozen-pretzels-gf",                price: 25.00, name: "GF Pretzels (Rods & Twists)" },
+      { id: "dozen-chocchipcookiebites",        price: 15.00, name: "Chocolate Chip Cookie Bites" },
+      { id: "dozen-gfchocchipcookiebites",      price: 18.00, name: "GF Chocolate Chip Cookie Bites" },
+      { id: "dozen-sugarcookiebites",           price: 15.00, name: "Sugar Cookie Bites" },
+      { id: "dozen-gfsugarcookiebites",         price: 18.00, name: "GF Sugar Cookie Bites" },
+      { id: "dozen-m&mcookiebites",             price: 15.00, name: "M&M Cookie Bites" },
+      { id: "dozen-gfm&mcookiebites",           price: 18.00, name: "GF M&M Cookie Bites" },
+      { id: "dozen-Smorescookiebites",          price: 15.00, name: "Smores Bites" },
+      { id: "dozen-GFSmorescookiebites",        price: 18.00, name: "GF Smores Bites" },
+      { id: "dozen-chocbrowniecookiebites",     price: 15.00, name: "Chocolate Brownie Bites" },
+      { id: "dozen-GFcookiebites",              price: 18.00, name: "GF Chocolate Brownie Bites" },
+      { id: "dozen-pumpkinchipcookiebites",     price: 15.00, name: "Pumpkin Chocolate Chip Cookie Bites (w/ Cream Cheese Icing)" }
+    ],
+    valentine: [
+      { id: "valentine-red-velvet-bouquet-classic", price: 30.00, name: "Red Velvet Cake Pop Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
+      { id: "valentine-red-velvet-cakepops-only",   price: 25.00, name: "Red Velvet Cake Pops Only (Dozen)",                          unitLabel: "Dozen" },
+      { id: "valentine-marshmallow-bouquet",        price: 28.00, name: "Chocolate Covered Marshmallow Bouquet (Valentine Arrangement — Dozen)", unitLabel: "Bouquet" },
+      { id: "valentine-marshmallows-only",          price: 23.00, name: "Chocolate Covered Marshmallows Only (Dozen)",                unitLabel: "Dozen" },
+      { id: "valentine-oreo-treat-box-4",           price: 14.00, name: "Valentine Oreo Treat Box (4)",                              unitLabel: "Box" },
+      { id: "valentine-buckeye-treat-box-5",        price: 15.00, name: "Buckeye Treat Box (5)",                                     unitLabel: "Box" },
+      { id: "valentine-bukeye-ball-treat-Dozen",    price: 22.00, name: "Buckeye Treat Box (Dozen)",                                 unitLabel: "Dozen" },
+      { id: "valentine-cheesecake-bites-cherry",    price: 20.00, name: "Cheesecake Bites — Cherry (Dozen)",                        unitLabel: "Dozen" },
+      { id: "valentine-cheesecake-bites-raspberry", price: 20.00, name: "Cheesecake Bites — Raspberry (Dozen)",                     unitLabel: "Dozen" }
+    ],
+    treatboxes: [
+      { id: "box-oreos",          price: 12.00, name: "Four Chocolate Dipped Oreo Box" },
+      { id: "box-oreos-gf",       price: 15.00, name: "Gluten Free Oreo Box" },
+      { id: "box-chips",          price: 12.00, name: "Chocolate Dipped Chips Box" },
+      { id: "box-chips-pretzels", price: 14.00, name: "Chips & Pretzels Box" }
+    ],
+    packages: [
+      {
+        id: "package-mini", base_price: 60.00, gf_surcharge: 3.00,
+        name: "Mini Package (30 treats)",
+        treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "6 Mini Rice Krispies"]
+      },
+      {
+        id: "package-small", base_price: 95.00, gf_surcharge: 3.00,
+        name: "Small Package (4 Dozen)",
+        treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
+      },
+      {
+        id: "package-medium", base_price: 140.00, gf_surcharge: 6.00,
+        name: "Medium Package (6 Dozen)",
+        treats: ["2 Dozen Oreos", "2 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
+      },
+      {
+        id: "package-large", base_price: 210.00, gf_surcharge: 6.00,
+        name: "Large Package (9 Dozen)",
+        treats: ["2 Dozen Oreos", "2 Dozen Nutter Butters", "2 Dozen Pretzels", "2 Dozen Mini Rice Krispies", "1 Dozen Cake Pops"]
+      }
+    ]
+  };
 
-        { id: "valentine-oreo-treat-box-4",           price: 14.00, name: "Valentine Oreo Treat Box (4)", unitLabel: "Box" },
-        { id: "valentine-buckeye-treat-box-5",        price: 15.00, name: "Buckeye Treat Box (5)", unitLabel: "Box" },
-        { id: "valentine-bukeye-ball-treat-Dozen",    price: 22.00, name: "Buckeye Treat Box (Dozen)", unitLabel: "Dozen"},
-
-        { id: "valentine-cheesecake-bites-cherry",    price: 20.00, name: "Cheesecake Bites — Cherry (Dozen)", unitLabel: "Dozen" },
-        { id: "valentine-cheesecake-bites-raspberry", price: 20.00, name: "Cheesecake Bites — Raspberry (Dozen)", unitLabel: "Dozen" }
-      ],
-
-      treatboxes: [
-        { id: "box-oreos",          price: 12.00, name: "Four Chocolate Dipped Oreo Box" },
-        { id: "box-oreos-gf",       price: 15.00, name: "Gluten Free Oreo Box" },
-        { id: "box-chips",          price: 12.00, name: "Chocolate Dipped Chips Box" },
-        { id: "box-chips-pretzels", price: 14.00, name: "Chips & Pretzels Box" }
-      ],
-      packages: [
-        {
-          id: "package-mini",
-          base_price: 60.00,
-          gf_surcharge: 3.00,
-          name: "Mini Package (30 treats)",
-          treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "6 Mini Rice Krispies"]
-        },
-        {
-          id: "package-small",
-          base_price: 95.00,
-          gf_surcharge: 3.00,
-          name: "Small Package (4 Dozen)",
-          treats: ["1 Dozen Oreos", "1 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
-        },
-        {
-          id: "package-medium",
-          base_price: 140.00,
-          gf_surcharge: 6.00,
-          name: "Medium Package (6 Dozen)",
-          treats: ["2 Dozen Oreos", "2 Dozen Nutter Butters", "1 Dozen Pretzels", "1 Dozen Mini Rice Krispies"]
-        },
-        {
-          id: "package-large",
-          base_price: 210.00,
-          gf_surcharge: 6.00,
-          name: "Large Package (9 Dozen)",
-          treats: [
-            "2 Dozen Oreos",
-            "2 Dozen Nutter Butters",
-            "2 Dozen Pretzels",
-            "2 Dozen Mini Rice Krispies",
-            "1 Dozen Cake Pops"
-          ]
-        }
-      ]
-    };
-
-    // ---- Render helpers ----
-    function renderDozenItem(item, index) {
-      const bgColorClass = (index % 2 === 0) ? 'bg-fcf4f9' : 'bg-white';
-      const isDozen = item.id.startsWith('dozen');
-      const isBox = item.id.startsWith('box');
-      const unitLabel = item.unitLabel || (isDozen ? 'Dozen' : (isBox ? 'Box' : 'Each'));
-
-      return `
-        <div class="flex items-center justify-between p-3 border border-pink-100 rounded-lg ${bgColorClass}">
-          <div class="flex-1 min-w-0 pr-4">
-            <span class="font-semibold text-gray-800">${item.name}</span>
-            <p class="text-sm text-gray-500 mt-1">($${item.price.toFixed(2)} / ${unitLabel})</p>
-          </div>
-          <input
-            type="number"
-            min="0"
-            value="0"
-            data-price="${item.price}"
-            id="${item.id}"
-            name="${item.id}"
-            class="input-qty total-calc"
-          >
+  // ---- Render helpers ----
+  function renderDozenItem(item, index) {
+    const bgColorClass = (index % 2 === 0) ? 'bg-fcf4f9' : 'bg-white';
+    const isDozen = item.id.startsWith('dozen');
+    const isBox   = item.id.startsWith('box');
+    const unitLabel = item.unitLabel || (isDozen ? 'Dozen' : (isBox ? 'Box' : 'Each'));
+    return `
+      <div class="flex items-center justify-between p-3 border border-pink-100 rounded-lg ${bgColorClass}">
+        <div class="flex-1 min-w-0 pr-4">
+          <span class="font-semibold text-gray-800">${item.name}</span>
+          <p class="text-sm text-gray-500 mt-1">($${item.price.toFixed(2)} / ${unitLabel})</p>
         </div>
-      `;
-    }
+        <input type="number" min="0" value="0"
+          data-price="${item.price}" id="${item.id}" name="${item.id}"
+          class="input-qty total-calc">
+      </div>`;
+  }
 
-    function renderPackageItem(pkg) {
-      return `
-        <div class="p-4 border-2 border-teal-200 rounded-lg bg-teal-50">
-          <div class="flex justify-between items-start mb-2">
-            <h4 class="font-bold text-teal-700 text-lg">
-              ${pkg.name} - $${pkg.base_price.toFixed(2)}
-            </h4>
-          </div>
-          <ul class="text-sm text-gray-600 mb-3 list-disc list-inside space-y-0.5">
-            ${pkg.treats.map(t => `<li>${t}</li>`).join('')}
-          </ul>
-          <div class="flex items-center justify-end space-x-4 pt-2 border-t border-teal-200">
-            <label class="flex items-center space-x-2 cursor-pointer">
-              <input
-                type="checkbox"
-                data-price="${pkg.base_price}"
-                id="${pkg.id}-classic"
-                name="package-selection"
-                class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500"
-              >
-              <span class="text-gray-700">Classic</span>
-            </label>
-            <label class="flex items-center space-x-2 cursor-pointer">
-              <input
-                type="checkbox"
-                data-price="${pkg.base_price + pkg.gf_surcharge}"
-                id="${pkg.id}-gf"
-                name="package-selection"
-                class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500"
-              >
-              <span class="text-gray-700">
-                Gluten Free (+ $${pkg.gf_surcharge.toFixed(2)})
-              </span>
-            </label>
-          </div>
+  function renderPackageItem(pkg) {
+    return `
+      <div class="p-4 border-2 border-teal-200 rounded-lg bg-teal-50">
+        <div class="flex justify-between items-start mb-2">
+          <h4 class="font-bold text-teal-700 text-lg">${pkg.name} — $${pkg.base_price.toFixed(2)}</h4>
         </div>
-      `;
-    }
+        <ul class="text-sm text-gray-600 mb-3 list-disc list-inside space-y-0.5">
+          ${pkg.treats.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+        <div class="flex items-center justify-end space-x-4 pt-2 border-t border-teal-200">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" data-price="${pkg.base_price}"
+              id="${pkg.id}-classic" name="package-selection"
+              class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500">
+            <span class="text-gray-700">Classic</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" data-price="${pkg.base_price + pkg.gf_surcharge}"
+              id="${pkg.id}-gf" name="package-selection"
+              class="total-calc form-checkbox h-5 w-5 text-pink-500 rounded border-pink-300 focus:ring-pink-500">
+            <span class="text-gray-700">Gluten Free (+ $${pkg.gf_surcharge.toFixed(2)})</span>
+          </label>
+        </div>
+      </div>`;
+  }
 
-    // ---- Total calculation ----
-    function calculateTotal() {
-      let total = 0;
+  // ---- Total calculation ----
+  function calculateTotal() {
+    let total = 0;
+    document.querySelectorAll('.total-calc').forEach(input => {
+      const price = parseFloat(input.getAttribute('data-price')) || 0;
+      if (input.type === 'number')   total += (parseInt(input.value, 10) || 0) * price;
+      if (input.type === 'checkbox' && input.checked && input.name === 'package-selection') total += price;
+    });
+    document.getElementById('totalDisplay').textContent = `$${total.toFixed(2)}`;
+  }
+
+  // ---- Init ----
+  function initOrderForm() {
+    document.getElementById('dozenItems').innerHTML      = prices.dozen.map(renderDozenItem).join('');
+    const valEl = document.getElementById('valentineItems');
+    if (valEl) valEl.innerHTML = prices.valentine.map(renderDozenItem).join('');
+    document.getElementById('treatBoxItems').innerHTML   = prices.treatboxes.map(renderDozenItem).join('');
+    document.getElementById('packageItems').innerHTML    = prices.packages.map(renderPackageItem).join('');
+
+    document.querySelectorAll('.total-calc').forEach(input => {
+      if (input.type === 'number') {
+        input.addEventListener('input',  calculateTotal);
+        input.addEventListener('change', calculateTotal);
+      }
+      if (input.type === 'checkbox' && input.name === 'package-selection') {
+        input.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            const pkgId = e.target.id.substring(0, e.target.id.lastIndexOf('-'));
+            document.querySelectorAll(`input[id^="${pkgId}"]`).forEach(s => { if (s !== e.target) s.checked = false; });
+          }
+          calculateTotal();
+        });
+      }
+    });
+    calculateTotal();
+
+    document.getElementById('orderForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = {
+        name:        document.getElementById('name').value.trim(),
+        email:       document.getElementById('email').value.trim(),
+        phone:       document.getElementById('phone').value.trim(),
+        date_needed: document.getElementById('date_needed').value.trim(),
+        notes:       document.getElementById('notes').value.trim(),
+        total:       document.getElementById('totalDisplay').textContent,
+        items: []
+      };
 
       document.querySelectorAll('.total-calc').forEach(input => {
-        const priceAttr = input.getAttribute('data-price');
-        const price = priceAttr ? parseFloat(priceAttr) : 0;
-
+        const price = parseFloat(input.getAttribute('data-price')) || 0;
         if (input.type === 'number') {
           const qty = parseInt(input.value, 10) || 0;
-          total += qty * price;
+          if (qty > 0) {
+            let itemName = input.id;
+            const m = [...prices.dozen, ...prices.valentine, ...prices.treatboxes].find(d => d.id === input.id);
+            if (m) itemName = m.name;
+            data.items.push({ type: 'Item', item: itemName, quantity: qty, price_per_unit: price });
+          }
         }
-
         if (input.type === 'checkbox' && input.checked && input.name === 'package-selection') {
-          total += price;
+          const pkgId = input.id.substring(0, input.id.lastIndexOf('-'));
+          const pkg   = prices.packages.find(p => p.id === pkgId);
+          if (pkg) {
+            let name = pkg.name + (input.id.endsWith('-gf') ? ' (Gluten Free)' : ' (Classic)');
+            data.items.push({ type: 'Package', item: name, quantity: 1, price_per_unit: price });
+          }
         }
       });
 
-      document.getElementById('totalDisplay').textContent = `$${total.toFixed(2)}`;
-    }
-
-    // ---- Init ----
-    function initOrderForm() {
-    const dozenItemsContainer = document.getElementById('dozenItems');
-    const valentineItemsContainer = document.getElementById('valentineItems');
-    const treatBoxItemsContainer = document.getElementById('treatBoxItems');
-    const packageItemsContainer = document.getElementById('packageItems');
-    const orderForm = document.getElementById('orderForm');
-
-    
-      // Render items
-      dozenItemsContainer.innerHTML = prices.dozen.map(renderDozenItem).join('');
-      if (valentineItemsContainer) {
-        valentineItemsContainer.innerHTML = prices.valentine.map(renderDozenItem).join('');
-      }
-      treatBoxItemsContainer.innerHTML = prices.treatboxes.map(renderDozenItem).join('');
-      packageItemsContainer.innerHTML = prices.packages.map(renderPackageItem).join('');
-
-      // Attach listeners
-      document.querySelectorAll('.total-calc').forEach(input => {
-        if (input.type === 'number') {
-          input.addEventListener('input', calculateTotal);
-          input.addEventListener('change', calculateTotal);
-        }
-        if (input.type === 'checkbox' && input.name === 'package-selection') {
-          input.addEventListener('change', (e) => {
-            if (e.target.checked) {
-              const pkgId = e.target.id.substring(0, e.target.id.lastIndexOf('-'));
-              const siblings = document.querySelectorAll(`input[id^="${pkgId}"]`);
-              siblings.forEach(s => {
-                if (s !== e.target) s.checked = false;
-              });
-            }
-            calculateTotal();
-          });
-        }
-      });
-
-      calculateTotal();
-
-      // Submit -> build summary -> send to Formspree
-      orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const data = {
-          name: document.getElementById('name').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          phone: document.getElementById('phone').value.trim(),
-          date_needed: document.getElementById('date_needed').value.trim(),
-          notes: document.getElementById('notes').value.trim(),
-          total: document.getElementById('totalDisplay').textContent,
-          items: []
-        };
-
-        // Collect items
-        document.querySelectorAll('.total-calc').forEach(input => {
-          const priceAttr = input.getAttribute('data-price');
-          const price = priceAttr ? parseFloat(priceAttr) : 0;
-
-          if (input.type === 'number') {
-            const qty = parseInt(input.value, 10) || 0;
-            if (qty > 0) {
-              let itemName = input.id;
-              const dozenMatch = prices.dozen.find(d => d.id === input.id);
-              const valentineMatch = prices.valentine.find(v => v.id === input.id);
-              const boxMatch = prices.treatboxes.find(b => b.id === input.id);
-              if (dozenMatch) itemName = dozenMatch.name;
-              if (valentineMatch) itemName = valentineMatch.name;
-              if (boxMatch) itemName = boxMatch.name;
-
-              data.items.push({
-                type: 'Item',
-                item: itemName,
-                quantity: qty,
-                price_per_unit: price
-              });
-            }
-          }
-
-          if (input.type === 'checkbox' && input.checked && input.name === 'package-selection') {
-            const pkgId = input.id.substring(0, input.id.lastIndexOf('-'));
-            const pkg = prices.packages.find(p => p.id === pkgId);
-            if (pkg) {
-              let name = pkg.name;
-              if (input.id.endsWith('-gf')) {
-                name += ' (Gluten Free)';
-              } else {
-                name += ' (Classic)';
-              }
-              data.items.push({
-                type: 'Package',
-                item: name,
-                quantity: 1,
-                price_per_unit: price
-              });
-            }
-          }
+      let summary = `Name: ${data.name}\nEmail: ${data.email}\n`;
+      if (data.phone) summary += `Phone: ${data.phone}\n`;
+      summary += `Date Needed: ${data.date_needed}\n\n--- Order Items ---\n`;
+      if (!data.items.length) {
+        summary += 'No items selected (please review).\n';
+      } else {
+        data.items.forEach(item => {
+          summary += `${item.quantity} x ${item.item} @ $${item.price_per_unit.toFixed(2)} (Total: $${(item.quantity * item.price_per_unit).toFixed(2)})\n`;
         });
+      }
+      summary += `\nEstimated Total: ${data.total}\n`;
+      if (data.notes) summary += `\nNotes:\n${data.notes}\n`;
 
-        // Build summary string
-        let summary = '';
-        summary += `Name: ${data.name}\n`;
-        summary += `Email: ${data.email}\n`;
-        if (data.phone) summary += `Phone: ${data.phone}\n`;
-        summary += `Date Needed: ${data.date_needed}\n\n`;
+      document.getElementById('hiddenTotal').value   = data.total;
+      document.getElementById('hiddenSummary').value = summary;
 
-        summary += `--- Order Items ---\n`;
-        if (data.items.length === 0) {
-          summary += `No items selected (please review).\n`;
+      const form = document.getElementById('orderForm');
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          form.innerHTML = `
+            <div style="text-align:center; padding: 3rem 1rem;">
+              <div style="font-size:3rem; margin-bottom:1rem;">🎉</div>
+              <h2 style="font-family:'Playfair Display',serif; color:var(--pink); font-size:2rem; margin-bottom:0.75rem;">Order Received!</h2>
+              <p style="color:var(--text-muted); font-size:1rem; max-width:420px; margin:0 auto;">
+                Thank you! Tina will reach out via email or text to confirm your order details, availability, and final pricing.
+              </p>
+              <a href="index.html" class="btn" style="margin-top:2rem; display:inline-block;">Back to Home</a>
+            </div>`;
         } else {
-          data.items.forEach(item => {
-            const itemTotal = item.quantity * item.price_per_unit;
-            summary += `${item.quantity} x ${item.item} @ $${item.price_per_unit.toFixed(2)} (Total: $${itemTotal.toFixed(2)})\n`;
-          });
+          alert('There was an issue submitting your order. Please email Tina directly at tinastemptingtreats@gmail.com.');
         }
-
-        summary += `\nEstimated Total: ${data.total}\n`;
-        if (data.notes) {
-          summary += `\nNotes:\n${data.notes}\n`;
-        }
-
-        // Fill hidden fields for Formspree
-        document.getElementById('hiddenTotal').value = data.total;
-        document.getElementById('hiddenSummary').value = summary;
-
-        // Submit to Formspree
-        orderForm.submit();
+      }).catch(() => {
+        alert('Network error. Please email Tina directly at tinastemptingtreats@gmail.com.');
       });
-    }
+    });
+  }
 
-    window.onload = initOrderForm;
-  </script>
+  document.addEventListener('DOMContentLoaded', initOrderForm);
+</script>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
